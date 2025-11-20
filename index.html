@@ -70,9 +70,11 @@
         /* Frosted glass effect for content */
         /* Existing */
 .glass-panel {
-    /* Set opacity to 0.15 (15%) for an almost invisible background */
-    background-color: rgba(18, 24, 38, 0.15); 
-    
+    background-color: rgba(18, 24, 38, 0.15); /* Ultra Transparent */
+    backdrop-filter: blur(35px); /* Highly blurred */
+    /* ... other styles ... */
+}
+
     /* Keep strong blur (35px) for the 'frosted' effect over the background */
     backdrop-filter: blur(35px); 
     -webkit-backdrop-filter: blur(35px);
