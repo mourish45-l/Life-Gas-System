@@ -70,26 +70,16 @@
         /* Frosted glass effect for content */
         /* Existing */
 .glass-panel {
-    background-color: rgba(255, 255, 255, 0.9); /* Too opaque */
-    backdrop-filter: blur(25px); /* Good blur */
-    -webkit-backdrop-filter: blur(12px); /* Let's increase this */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Suggested High-Fidelity Tweak */
-.glass-panel {
-    /* Slightly more transparent background (Apple often uses 0.85 to 0.95) */
-    background-color: rgba(255, 255, 255, 0.92); 
+    /* Set opacity to 0.15 (15%) for an almost invisible background */
+    background-color: rgba(18, 24, 38, 0.15); 
     
-    /* Increase the blur radius significantly for that 'frosted' look */
-    backdrop-filter: blur(30px); 
-    -webkit-backdrop-filter: blur(30px);
+    /* Keep strong blur (35px) for the 'frosted' effect over the background */
+    backdrop-filter: blur(35px); 
+    -webkit-backdrop-filter: blur(35px);
     
-    /* Subtle border */
-    border: 1px solid rgba(255, 255, 255, 0.5); 
-    
-    /* Add a slight inner shadow for depth (optional but nice) */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+    /* Keep the subtle, light border/glow to define the edge */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);
 }
 
         
