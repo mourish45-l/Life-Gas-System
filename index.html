@@ -136,10 +136,34 @@ body::before {
         .section-subtitle {
             @apply mt-2 text-lg text-gray-600;
         }
+    /* New CSS to center the logo in the background */
+#center-logo-bg {
+    position: fixed; /* Crucial for placing it in the viewport background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; /* Place it above the liquid background (z-index: -1) but below the glass panels (z-index: 10+) */
+    pointer-events: none; /* Allows clicks to pass through to elements beneath it */
+
+    /* Image Properties */
+    background-image: url('logo-t.webp');
+    background-size: 300px; /* Adjust size as needed. Use a percentage (e.g., 50%) for responsiveness. */
+    background-repeat: no-repeat;
+    background-position: center center; /* This centers the image both horizontally and vertically */
+    
+    /* Style/Transparency */
+    opacity: 0.1; /* Make it highly transparent to serve as a watermark */
+        }
+        
     </style>
 </head>
 <body class="antialiased">
+<div id="center-logo-bg"></div> 
 
+<div class="relative z-10"> 
+</div>
+    
 
     <!-- Main Content Wrapper -->
     <div class="relative z-10">
