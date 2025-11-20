@@ -537,14 +537,78 @@
                     }
                 `;
 
-                const fragmentShader = `
+                                const fragmentShader = `
                     uniform float u_time;
                     varying vec2 vUv;
 
-                    // Simple noise function
-                    float noise(vec2 st) {
-                        return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+                    // Improved Hash function (for more random noise)
+                    float hash(vec2 p) {
+                        p = fract(p * vec2(43758.5453123, 22718.432345));
+                        p += dot(p, p + 19.19);
+                        return fract(p.x * p.y);
                     }
+                    
+                    // Value Noise (Smoother than simple perlin/random noise)
+                    float noise(vec2 st) {
+                        vec2 i = floor(st);
+                        vec2 f = fract(st);
+                        
+                        // Smoothstep interpolation
+                        vec2 u = f * f * (3.0 - 2.0 * f);
+                        
+                        float a = hash(i);
+                        float b = hash(i + vec2(1.0, 0.0));
+                        float c = hash(i + vec2(0.0, 1.0));
+                        float d = hash(i + vec2(1.0, 1.0));
+                        
+                        return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+                    }
+
+                    // FBM (Fractional Brownian Motion) - Increased iterations for more detail
+                    float fbm(vec2 st) {
+                        float value = 0.0;
+                        float amplitude = 0.5;
+                        float frequency = 0.0;
+                        
+                        // Increase to 5 or 6 iterations for high-detail liquid
+                        for (int i = 0; i < 5; i++) { 
+                            value += amplitude * noise(st);
+                            st *= 2.0;
+                            amplitude *= 0.5;
+                        }
+                        return value;
+                    }
+
+                    void main() {
+                        vec2 st = vUv * 2.0; // Scale up the noise field
+                        st.x *= 1.5; // Aspect correction
+                        
+                        Time-Varying Flow
+                        vec2 flow_dir = vec2(sin(u_time * 0.05), cos(u_time * 0.03));
+                        float n = fbm(st + flow_dir * 0.5); // Add time flow to the coordinates
+                        
+                        // 2. Color Definition (More ambient, cleaner colors)
+                        // Professional Blue
+                        vec3 colorA = vec3(0.0, 0.33, 0.6); 
+                        // Subtle Green/Aqua
+                        vec3 colorB = vec3(0.1, 0.8, 0.6); 
+                        // Ambient White/Light Blue
+                        vec3 colorC = vec3(0.9, 0.95, 1.0); 
+
+                        // 3. Blending
+                        // Blend A and B based on the noise map
+                        float blendAB = smoothstep(0.4, 0.6, n);
+                        vec3 midColor = mix(colorA, colorB, blendAB);
+
+                        // Blend the result with ambient white for highlight/glow
+                        float blendC = smoothstep(0.3, 0.7, fbm(st * 1.5 + u_time * 0.08));
+                        vec3 finalColor = mix(midColor, colorC, blendC * 0.6); // 0.6 keeps the color subtle
+
+                        // 4. Output
+                        // Final Opacity: Slightly higher for more presence
+                        gl_FragColor = vec4(finalColor, 0.85); 
+                    }
+                `;
 
                     // FBM (Fractional Brownian Motion)
                     float fbm(vec2 st) {
