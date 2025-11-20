@@ -55,16 +55,60 @@
     background-color: white; 
 }
 /* Add a dark overlay to the three.js background for depth */
-#three-bg {
-    /* Keep existing styles */
-    position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.7;
+/* Update the body background to ensure the darkest color is the base */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0c1830; /* Keep the deep navy background color */
 }
+
+/* Remove #three-bg styles as the canvas is gone */
+/* #three-bg { ... } */
+
+/* NEW: Apply the animated gradient directly to the body */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%; /* Start outside view */
+    left: -50%;
+    width: 200%; /* Make the gradient huge */
+    height: 200%;
+    z-index: -1;
+    
+    /* THE COLOR BLEND: Use a massive conic gradient for the blend */
+    background: conic-gradient(
+        from 90deg at 50% 50%,
+        #FF004A 0%,  /* Red */
+        #FFD700 20%, /* Yellow */
+        #0044FF 40%, /* Blue */
+        #3CB371 60%, /* Green */
+        #FFFFFF 80%, /* White */
+        #FF004A 100% /* Close the loop with Red */
+    );
+    background-size: 50% 50%;
+    
+    /* ANIMATION: Slowly move the background for the "liquid" effect */
+    animation: moveGradient 30s ease-in-out infinite alternate;
+    opacity: 0.6; /* Soften the background so it's not too intense */
+}
+
+/* ------------------------------------- */
+
+/* NEW: Keyframes for Gradient Movement */
+@keyframes moveGradient {
+    0% { 
+        transform: rotate(0deg) scale(1.0);
+        filter: hue-rotate(0deg); 
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1); /* Rotate and scale slightly */
+        filter: hue-rotate(180deg); /* Shift the colors mid-way */
+    }
+    100% { 
+        transform: rotate(360deg) scale(1.0);
+        filter: hue-rotate(360deg); 
+    }
+}
+
 
         
         /* Frosted glass effect for content */
