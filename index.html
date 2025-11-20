@@ -66,12 +66,30 @@
         }
         
         /* Frosted glass effect for content */
-        .glass-panel {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        /* Existing */
+.glass-panel {
+    background-color: rgba(255, 255, 255, 0.9); /* Too opaque */
+    backdrop-filter: blur(25px); /* Good blur */
+    -webkit-backdrop-filter: blur(12px); /* Let's increase this */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Suggested High-Fidelity Tweak */
+.glass-panel {
+    /* Slightly more transparent background (Apple often uses 0.85 to 0.95) */
+    background-color: rgba(255, 255, 255, 0.92); 
+    
+    /* Increase the blur radius significantly for that 'frosted' look */
+    backdrop-filter: blur(30px); 
+    -webkit-backdrop-filter: blur(30px);
+    
+    /* Subtle border */
+    border: 1px solid rgba(255, 255, 255, 0.5); 
+    
+    /* Add a slight inner shadow for depth (optional but nice) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+}
+
         
         .section-title {
             @apply text-3xl font-bold text-gray-900 sm:text-4xl;
