@@ -3,665 +3,1115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Gas Systems - CE & ISO Certified Manufacturer</title>
+    <title>Life Gas Systems - CE & ISO Certified Medical Equipment Manufacturer</title>
     <meta name="google-site-verification" content="QX0KHHRYckC-NfcbNO8fJYZd_f2UgnZUacJ5qwaC3qQ" />
-    <!-- Tailwind CSS -->
+    
+    <!-- Advanced Tailwind with Custom Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lgs-red': '#FF1E1E',
+                        'lgs-blue': '#0066FF',
+                        'lgs-green': '#00FF88',
+                        'lgs-yellow': '#FFD700',
+                        'lgs-black': '#0A0A0A',
+                        'lgs-white': '#FFFFFF',
+                        'lgs-cyan': '#00FFFF',
+                        'lgs-magenta': '#FF00FF',
+                    },
+                    animation: {
+                        'rgb-border': 'rgb-border 8s linear infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                    },
+                    keyframes: {
+                        'rgb-border': {
+                            '0%, 100%': { 'border-color': '#FF1E1E' },
+                            '25%': { 'border-color': '#0066FF' },
+                            '50%': { 'border-color': '#00FF88' },
+                            '75%': { 'border-color': '#FFD700' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'neon-pulse': {
+                            '0%, 100%': { 
+                                'box-shadow': '0 0 5px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3)' 
+                            },
+                            '50%': { 
+                                'box-shadow': '0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.5)' 
+                            },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                        'shimmer': {
+                            '0%': { 'background-position': '-1000px 0' },
+                            '100%': { 'background-position': '1000px 0' },
+                        },
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    }
+                }
+            },
+            plugins: [],
+        }
+    </script>
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS (Animate On Scroll) Library CSS -->
+    <!-- AOS (Animate On Scroll) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <link rel="icon" href="logo-t.webpp" type="image/webpp">
+    <link rel="icon" href="logo-t.webp" type="image/webp">
 
     <style>
-        /* Custom font import */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        /* Advanced Custom Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --rgb-red: #FF1E1E;
+            --rgb-blue: #0066FF;
+            --rgb-green: #00FF88;
+            --rgb-yellow: #FFD700;
+        }
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcfcfc; /* Slight off-white for contrast */
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Brand Colors */
-        :root {
-            --lgs-red: #C62828;
-            --lgs-blue: #1565C0;
-            --lgs-green: #2E7D32;
-            --lgs-yellow: #F9A825;
-            --lgs-black: #212121;
-            --whatsapp-green: #25D366;
-        }
-
-        /* Utility Classes for Colors */
-        .text-lgs-red { color: var(--lgs-red); }
-        .bg-lgs-red { background-color: var(--lgs-red); }
-        .text-lgs-blue { color: var(--lgs-blue); }
-        .bg-lgs-blue { background-color: var(--lgs-blue); }
-        .text-lgs-green { color: var(--lgs-green); }
-        .bg-lgs-green { background-color: var(--lgs-green); }
-        .text-lgs-yellow { color: var(--lgs-yellow); }
-
-        /* General Card Hover Effect */
-        .hover-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            background-color: #fafafa;
+            overflow-x: hidden;
         }
         
-        /* Certification Badge Styling (Applied Glass Effect) */
-        .cert-badge-placeholder {
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
-            backdrop-filter: blur(8px); /* The key glass effect */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
         }
-        .cert-badge-placeholder:hover {
-            transform: scale(1.02);
-            border-color: var(--lgs-blue);
+        
+        /* Advanced RGB Effects */
+        .rgb-gradient-bg {
+            background: linear-gradient(135deg, 
+                rgba(255, 30, 30, 0.1) 0%, 
+                rgba(0, 102, 255, 0.1) 25%, 
+                rgba(0, 255, 136, 0.1) 50%, 
+                rgba(255, 215, 0, 0.1) 75%, 
+                rgba(255, 30, 30, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradient-x 15s ease infinite;
         }
-        .cert-badge-placeholder img {
-            max-width: 100%;
-            height: auto;
-            max-height: 100px;
+        
+        .rgb-border-animation {
+            border: 3px solid;
+            animation: rgb-border 8s linear infinite;
+            border-radius: 1rem;
         }
-
-        /* Liquid Glass Navigation Bar Effect */
-        .liquid-glass-nav {
-            background-color: rgba(255, 255, 255, 0.85); /* Slightly less opaque */
-            backdrop-filter: blur(10px); 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        
+        .rgb-text-gradient {
+            background: linear-gradient(90deg, var(--rgb-red), var(--rgb-blue), var(--rgb-green), var(--rgb-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-x 8s ease infinite;
         }
-
-        /* Floating WhatsApp Button (Kept simple for functionality) */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: var(--whatsapp-green);
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+        
+        .rgb-shadow {
+            box-shadow: 0 10px 30px rgba(255, 30, 30, 0.2),
+                        0 0 60px rgba(0, 102, 255, 0.1),
+                        0 0 100px rgba(0, 255, 136, 0.05);
         }
-
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
+        
+        .rgb-shadow-hover:hover {
+            box-shadow: 0 20px 40px rgba(255, 30, 30, 0.3),
+                        0 0 80px rgba(0, 102, 255, 0.2),
+                        0 0 120px rgba(0, 255, 136, 0.1);
+        }
+        
+        /* Advanced Glass Morphism */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark-glass-morphism {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Particle Effect Background */
+        .particles-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .particles-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FF1E1E' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        /* Advanced Hover Effects */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--rgb-red), var(--rgb-blue), var(--rgb-green));
+            border-radius: 10px;
+        }
+        
+        /* Shimmer Effect */
+        .shimmer-effect {
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 0.8) 50%, 
+                rgba(255, 255, 255, 0) 100%);
+            background-size: 1000px 100%;
+            animation: shimmer 2.5s linear infinite;
+        }
+        
+        /* Advanced Button */
+        .btn-advanced {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-advanced:hover::before {
+            left: 100%;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            .text-responsive {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .text-responsive {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .text-responsive {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
-
-    <!-- Top Bar with Contact Info -->
-    <div class="bg-lgs-blue text-white text-sm py-2 hidden lg:block">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <span data-aos="fade-left" data-aos-delay="50"><i class="fas fa-phone-alt mr-2"></i>9629813483 / 9659233313</span>
-            <span data-aos="fade-left" data-aos-delay="100"><i class="fas fa-envelope mr-2"></i>lifegas1987@gmail.com</span>
-            <span data-aos="fade-right" data-aos-delay="150"><i class="fas fa-certificate mr-1"></i>ISO 9001:2015 Certified</span>
-            <span data-aos="fade-right" data-aos-delay="200"><i class="fas fa-check-circle mr-1"></i>CE Certified</span>
+<body class="relative">
+    <!-- Advanced RGB Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-lgs-red rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow"></div>
+        <div class="absolute top-1/2 right-1/4 w-96 h-96 bg-lgs-blue rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow animation-delay-1000"></div>
+        <div class="absolute bottom-1/4 left-1/2 w-80 h-80 bg-lgs-green rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow animation-delay-2000"></div>
+    </div>
+    
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-lgs-red via-lgs-blue to-lgs-green text-white py-2 px-4 text-center text-sm font-bold">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+            <span class="flex items-center"><i class="fas fa-bolt mr-2"></i> Emergency Service: 9629813483</span>
+            <span class="hidden md:inline">|</span>
+            <span class="flex items-center"><i class="fas fa-shipping-fast mr-2"></i> Pan-India Installation & Support</span>
+            <span class="hidden md:inline">|</span>
+            <span class="flex items-center"><i class="fas fa-certificate mr-2"></i> ISO 9001:2015 & CE Certified</span>
         </div>
     </div>
 
-    <!-- Navigation - Applied Liquid Glass Effect -->
-    <nav class="liquid-glass-nav sticky w-full z-50 top-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo Section - NOW USES logo-t.webp -->
-                <a href="#home" class="flex-shrink-0 flex items-center gap-3" data-aos="fade-down">
-                    <img src="logo-t.webp" alt="Life Gas Systems Logo" class="h-16 w-auto" />
-                    <div class="flex flex-col">
-                        <span class="font-bold text-xl text-gray-800 leading-none">Life Gas Systems</span>
-                        <span class="text-xs text-lgs-green font-semibold tracking-wide">MEDICAL MANUFACTURING</span>
+    <!-- Advanced Navigation -->
+    <nav class="sticky top-0 z-50 glass-morphism border-b border-white/20 shadow-lg">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo with RGB Effects -->
+                <a href="#home" class="flex items-center space-x-3 group" data-aos="fade-right">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-red via-lgs-blue to-lgs-green rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+                        <div class="relative bg-white p-2 rounded-xl">
+                            <img src="logo-t.webp" alt="Life Gas Systems" class="h-12 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/48x48/0A0A0A/FFFFFF?text=LGS'">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-black heading-font bg-gradient-to-r from-lgs-red to-lgs-blue bg-clip-text text-transparent">LIFE GAS SYSTEMS</h1>
+                        <p class="text-xs font-bold text-gray-600 tracking-widest">MEDICAL EQUIPMENT MANUFACTURER</p>
                     </div>
                 </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-600 hover:text-lgs-blue px-3 py-2 font-medium transition" data-aos="fade-down" data-aos-delay="100">Home</a>
-                    <a href="#products" class="text-gray-600 hover:text-lgs-blue px-3 py-2 font-medium transition" data-aos="fade-down" data-aos-delay="200">Products</a>
-                    <a href="#stats" class="text-gray-600 hover:text-lgs-blue px-3 py-2 font-medium transition" data-aos="fade-down" data-aos-delay="300">Expertise</a>
-                    <a href="#contact" class="bg-lgs-red text-white px-5 py-2 rounded-full hover:bg-red-700 transition shadow-lg flex items-center" data-aos="fade-down" data-aos-delay="400">
-                        <i class="fas fa-file-contract mr-2"></i> Get Free Quote
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-lgs-red font-semibold transition-all duration-300 hover:scale-105 flex items-center group">
+                        <i class="fas fa-home mr-2 text-lgs-blue group-hover:text-lgs-red"></i> Home
+                    </a>
+                    <a href="#products" class="text-gray-700 hover:text-lgs-blue font-semibold transition-all duration-300 hover:scale-105 flex items-center group">
+                        <i class="fas fa-boxes mr-2 text-lgs-green group-hover:text-lgs-blue"></i> Products
+                    </a>
+                    <a href="#expertise" class="text-gray-700 hover:text-lgs-green font-semibold transition-all duration-300 hover:scale-105 flex items-center group">
+                        <i class="fas fa-chart-line mr-2 text-lgs-red group-hover:text-lgs-green"></i> Expertise
+                    </a>
+                    <a href="#contact" class="btn-advanced bg-gradient-to-r from-lgs-red to-lgs-blue text-white px-6 py-3 rounded-xl font-bold shadow-lg hover-lift rgb-shadow-hover">
+                        <i class="fas fa-file-contract mr-2"></i> Request Quote
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 hover:text-lgs-red p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
-        
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lgs-blue hover:bg-gray-50">Home</a>
-                <a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lgs-blue hover:bg-gray-50">Products</a>
-                <a href="#stats" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lgs-blue hover:bg-gray-50">Expertise</a>
-                <a href="#contact" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-lgs-red hover:bg-red-700">Get Free Quote</a>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden glass-morphism border-t border-gray-200 px-4 py-6 shadow-xl">
+            <div class="space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-lgs-red font-semibold py-2 px-4 rounded-lg hover:bg-gray-50 transition">
+                    <i class="fas fa-home mr-3 text-lgs-blue"></i> Home
+                </a>
+                <a href="#products" class="block text-gray-700 hover:text-lgs-blue font-semibold py-2 px-4 rounded-lg hover:bg-gray-50 transition">
+                    <i class="fas fa-boxes mr-3 text-lgs-green"></i> Products
+                </a>
+                <a href="#expertise" class="block text-gray-700 hover:text-lgs-green font-semibold py-2 px-4 rounded-lg hover:bg-gray-50 transition">
+                    <i class="fas fa-chart-line mr-3 text-lgs-red"></i> Expertise
+                </a>
+                <a href="#contact" class="block bg-gradient-to-r from-lgs-red to-lgs-blue text-white font-bold py-3 px-6 rounded-xl text-center shadow-lg mt-4">
+                    <i class="fas fa-file-contract mr-2"></i> Request Free Quote
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-16 pb-12 lg:pt-24 lg:pb-24 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+    <!-- Hero Section with Advanced Effects -->
+    <section id="home" class="relative pt-10 md:pt-20 pb-20 md:pb-32 overflow-hidden particles-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right" data-aos-once="true">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-lgs-green text-sm font-semibold mb-6 border border-green-200">
-                        <i class="fas fa-heartbeat mr-2"></i> Trusted Expertise in Critical Care
+                <!-- Hero Content -->
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-lgs-green/20 to-lgs-blue/20 border border-lgs-green/30 mb-6">
+                        <i class="fas fa-certificate text-lgs-green mr-2"></i>
+                        <span class="font-bold text-gray-800">CE & ISO 9001:2015 CERTIFIED MANUFACTURER</span>
                     </div>
-                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
-                        Certified <span class="text-lgs-blue">Medical Gas</span> <br>
-                        Pipeline Systems
-                    </h1>
-                    <p class="mt-4 text-lg text-gray-500 mb-8 leading-relaxed">
-                        Manufacturing excellence backed by over **10 years of experience**. We deliver certified safety and reliability for critical care environments.
-                    </p>
-                    <div class="flex flex-wrap gap-4 items-center">
-                        <a href="#contact" class="px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-lgs-blue hover:bg-blue-800 md:py-3 md:text-lg shadow-lg transition flex items-center">
-                            Request Consultation <i class="fas fa-comment-dots ml-2"></i>
-                        </a>
-                        <!-- Converted Download Brochure to a button -->
-                        <a href="Brochure.pdf" download="Brochure.pdf" class="px-6 py-3 border border-lgs-green text-base font-medium rounded-md text-lgs-green bg-white hover:bg-green-50 md:py-3 md:text-lg transition flex items-center shadow-md">
-                            <i class="fas fa-file-pdf mr-2 text-xl"></i> Download Brochure
-                        </a>
-                        <a href="https://wa.me/919629813483?text=Hi, I would like to request a free quote for medical gas systems." target="_blank" class="text-gray-700 hover:text-green-700 text-sm font-medium transition flex items-center">
-                            <i class="fab fa-whatsapp text-green-500 mr-1 text-xl"></i> WhatsApp Us
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Certification Badges Display - Replaced text with images/placeholders -->
-                <div class="flex flex-col items-center justify-center space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
                     
-                    <!-- CE Logo Image Placeholder -->
-                    <div class="cert-badge-placeholder flex-col p-6 w-full h-48 shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="cesign_6906.jpg" 
-                             alt="CE Certified" 
-                             class="h-20 w-auto mx-auto mb-2"
-                        />
-                        <p class="text-sm text-gray-500 text-center font-semibold">CE Certified</p>
+                    <h1 class="text-responsive font-black leading-tight mb-6 heading-font">
+                        <span class="rgb-text-gradient">Precision Medical</span>
+                        <br>
+                        <span class="text-gray-900">Gas Pipeline Systems</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Advanced manufacturing of critical care medical equipment with <span class="font-bold text-lgs-red">CE certification</span> and <span class="font-bold text-lgs-blue">ISO 9001:2015</span> quality standards. Trusted by 500+ healthcare facilities across India.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a href="#contact" class="btn-advanced bg-gradient-to-r from-lgs-blue to-lgs-green text-white px-8 py-4 rounded-xl font-bold shadow-xl hover-lift text-lg">
+                            Request Consultation <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+                           target="_blank" 
+                           class="bg-white border-2 border-lgs-blue text-lgs-blue px-8 py-4 rounded-xl font-bold shadow-lg hover-lift hover:bg-lgs-blue hover:text-white transition-all duration-300">
+                            <i class="fas fa-download mr-2"></i> Download Catalog
+                        </a>
                     </div>
-
-                    <!-- ISO 9001:2015 Logo Image Placeholder -->
-                    <div class="cert-badge-placeholder flex-col p-6 w-full h-48 shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="ISO9001-2015-1.jpg" 
-                             alt="ISO 9001:2015 Certified" 
-                             class="h-20 w-auto mx-auto mb-2"
-                        />
-                        <p class="text-sm text-gray-500 text-center font-semibold">Quality Management System</p>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="text-2xl font-black text-lgs-red">10+</div>
+                            <div class="text-sm font-semibold text-gray-600">Years</div>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="text-2xl font-black text-lgs-blue">500+</div>
+                            <div class="text-sm font-semibold text-gray-600">Projects</div>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="text-2xl font-black text-lgs-green">50+</div>
+                            <div class="text-sm font-semibold text-gray-600">Hospitals</div>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="text-2xl font-black text-lgs-yellow">24/7</div>
+                            <div class="text-sm font-semibold text-gray-600">Support</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats & Expertise Section -->
-    <section id="stats" class="py-16 bg-lgs-blue/5 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <span class="text-lgs-blue font-bold tracking-wider uppercase text-sm border-b-2 border-lgs-blue pb-1">Our Strength</span>
-                <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Trusted Expertise in Medical Gas Systems
-                </h2>
-            </div>
-            
-            <!-- Stats Grid with Staggered Animations -->
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 text-center">
                 
-                <!-- Stat 1: Years of Experience -->
-                <div class="col-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition flex flex-col items-center justify-center hover-card" data-aos="zoom-in-up" data-aos-delay="100">
-                    <p class="text-4xl font-extrabold text-lgs-red">10+</p>
-                    <p class="text-sm font-semibold text-gray-700 mt-1">Years of Experience</p>
-                </div>
-
-                <!-- Stat 2: Projects Completed -->
-                <div class="col-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition flex flex-col items-center justify-center hover-card" data-aos="zoom-in-up" data-aos-delay="200">
-                    <p class="text-4xl font-extrabold text-lgs-blue">500+</p>
-                    <p class="text-sm font-semibold text-gray-700 mt-1">Projects Completed</p>
-                </div>
-
-                <!-- Stat 3: Healthcare Clients -->
-                <div class="col-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition flex flex-col items-center justify-center hover-card" data-aos="zoom-in-up" data-aos-delay="300">
-                    <p class="text-4xl font-extrabold text-lgs-green">50+</p>
-                    <p class="text-sm font-semibold text-gray-700 mt-1">Healthcare Clients</p>
-                </div>
-
-                <!-- Stat 4: Expert Team -->
-                <div class="col-span-2 bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition flex flex-col items-center justify-center hover-card" data-aos="zoom-in-up" data-aos-delay="400">
-                    <i class="fas fa-users-cog text-4xl text-lgs-yellow mb-2"></i>
-                    <p class="text-sm font-semibold text-gray-700 mt-1">Certified Expert Team</p>
-                </div>
-            </div>
-
-            <!-- Features Bar with AOS -->
-            <div class="mt-12 bg-white rounded-xl shadow-2xl p-6 grid grid-cols-1 sm:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="500">
-                <div class="flex items-start" data-aos="fade-up" data-aos-delay="600">
-                    <i class="fas fa-ambulance text-2xl text-lgs-red mr-3 mt-1 flex-shrink-0"></i>
-                    <div>
-                        <p class="font-bold text-gray-900">24/7 Support Available</p>
-                        <p class="text-sm text-gray-500">Round-the-clock emergency service.</p>
-                    </div>
-                </div>
-                <div class="flex items-start" data-aos="fade-up" data-aos-delay="700">
-                    <i class="fas fa-rocket text-2xl text-lgs-blue mr-3 mt-1 flex-shrink-0"></i>
-                    <div>
-                        <p class="font-bold text-gray-900">Rapid Response</p>
-                        <p class="text-sm text-gray-500">Emergency service within 2 hours nationwide.</p>
-                    </div>
-                </div>
-                <div class="flex items-start" data-aos="fade-up" data-aos-delay="800">
-                    <i class="fas fa-heart-pulse text-2xl text-lgs-green mr-3 mt-1 flex-shrink-0"></i>
-                    <div>
-                        <p class="font-bold text-gray-900">Safety First</p>
-                        <p class="text-sm text-gray-500">Comprehensive safety protocols and testing.</p>
+                <!-- Hero Visual with RGB Effects -->
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-2xl">
+                        <!-- RGB Border Animation -->
+                        <div class="absolute -inset-0.5 rgb-border-animation rounded-2xl opacity-50"></div>
+                        
+                        <!-- Certification Display -->
+                        <div class="relative z-10">
+                            <div class="text-center mb-8">
+                                <h3 class="text-2xl font-black text-gray-900 mb-2">International Certifications</h3>
+                                <p class="text-gray-600">Manufacturing Excellence Certified</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- CE Certification -->
+                                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover-lift">
+                                    <div class="flex items-center justify-center h-24 mb-4">
+                                        <img src="cesign_6906.jpg" alt="CE Certified" 
+                                             class="h-20 w-auto object-contain"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/200x80/B71C1C/FFFFFF?text=CE+CERTIFIED'">
+                                    </div>
+                                    <div class="text-center">
+                                        <h4 class="font-bold text-gray-900 mb-1">CE Mark Certified</h4>
+                                        <p class="text-sm text-gray-600">European Conformity for Medical Devices</p>
+                                        <div class="mt-2 inline-flex items-center text-xs font-bold text-lgs-green">
+                                            <i class="fas fa-check-circle mr-1"></i> Valid Certification
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- ISO Certification -->
+                                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover-lift">
+                                    <div class="flex items-center justify-center h-24 mb-4">
+                                        <img src="ISO9001-2015-1.jpg" alt="ISO 9001:2015" 
+                                             class="h-20 w-auto object-contain"
+                                             onerror="this.onerror=null; this.src='https://placehold.co/200x80/0D47A1/FFFFFF?text=ISO+9001%3A2015'">
+                                    </div>
+                                    <div class="text-center">
+                                        <h4 class="font-bold text-gray-900 mb-1">ISO 9001:2015</h4>
+                                        <p class="text-sm text-gray-600">Quality Management System Certified</p>
+                                        <div class="mt-2 inline-flex items-center text-xs font-bold text-lgs-green">
+                                            <i class="fas fa-check-circle mr-1"></i> Active Certification
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Download Catalog Button (Centered) -->
+                            <div class="mt-8 text-center">
+                                <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+                                   target="_blank" 
+                                   class="inline-flex items-center justify-center btn-advanced bg-gradient-to-r from-lgs-red to-lgs-yellow text-white px-8 py-4 rounded-xl font-bold shadow-xl hover-lift w-full md:w-auto">
+                                    <i class="fas fa-book-open mr-3 text-xl"></i>
+                                    <div class="text-left">
+                                        <div class="text-lg font-black">Download Complete Catalog</div>
+                                        <div class="text-xs font-medium opacity-90">All Products & Specifications</div>
+                                    </div>
+                                    <i class="fas fa-download ml-4 text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Manufacturing Section (UPDATED) -->
-    <section id="products" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Products Section with Advanced Grid -->
+    <section id="products" class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-lgs-red font-bold tracking-wider uppercase text-sm border-b-2 border-lgs-red pb-1">Our Manufacturing</span>
-                <h2 class="mt-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Premium Medical Equipment
+                <span class="text-lgs-red font-extrabold tracking-widest uppercase text-sm pb-1">Medical Equipment Manufacturing</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-black text-gray-900 heading-font">
+                    Premium Medical Gas Pipeline Products
                 </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Engineered with precision. Certified for safety. Built for life.
+                <p class="mt-4 max-w-3xl text-xl text-gray-600 mx-auto">
+                    Engineered with precision, certified for safety, manufactured for reliability in critical care environments.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Product 1 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-red to-lgs-blue rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-red/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-anchor text-3xl text-lgs-red"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Medical Pendent</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Ceiling-mounted medical service columns with integrated gas, electrical, data, and communication services for ICU and OT environments.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">CE Certified</span>
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Anti-static</span>
+                        <span class="px-3 py-1 bg-lgs-green/10 text-lgs-green text-xs font-bold rounded-full">Gas-tight</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-red hover:text-lgs-blue transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-blue to-lgs-green rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-bed text-3xl text-lgs-blue"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Bed Head Panel</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Integrated patient bedside units providing medical gas outlets, electrical sockets, lighting, and nurse call systems for hospital wards.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Modular Design</span>
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">Fire Retardant</span>
+                        <span class="px-3 py-1 bg-lgs-yellow/10 text-lgs-yellow text-xs font-bold rounded-full">LED Lighting</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-blue hover:text-lgs-green transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-green to-lgs-yellow rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-green/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-columns text-3xl text-lgs-green"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">ICU Cubical Track & Curtain</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Anti-bacterial privacy curtain systems with smooth-gliding aluminum tracks for ICU, CCU, and general ward patient isolation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-green/10 text-lgs-green text-xs font-bold rounded-full">Anti-bacterial</span>
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Noise Reducing</span>
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">Fire Retardant</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-green hover:text-lgs-yellow transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="400">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-yellow to-lgs-red rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-yellow/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-stream text-3xl text-lgs-yellow"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Gas Manifold System</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Centralized medical gas distribution systems with automatic changeover, pressure regulation, and alarm monitoring for hospitals.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-yellow/10 text-lgs-yellow text-xs font-bold rounded-full">Auto-changeover</span>
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">Alarm System</span>
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Remote Monitoring</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-yellow hover:text-lgs-red transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="500">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-red to-lgs-green rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-red/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-lungs text-3xl text-lgs-red"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Flow Meter & Humidifier</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Precision oxygen flow meters with integrated humidification systems for accurate gas delivery in respiratory therapy.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">Precision Control</span>
+                        <span class="px-3 py-1 bg-lgs-green/10 text-lgs-green text-xs font-bold rounded-full">Sterile</span>
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Calibrated</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-red hover:text-lgs-green transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+                 <!-- Product 6 -->
+                <div class="group bg-white rounded-2xl p-8 shadow-xl hover-lift border border-gray-100" data-aos="zoom-in-up" data-aos-delay="600">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lgs-blue to-lgs-red rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative h-16 w-16 bg-lgs-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-flask text-3xl text-lgs-blue"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Ward Vacuum Jar Set</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Complete suction systems with collection jars, regulators, and safety features for ward-level medical vacuum requirements.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-lgs-blue/10 text-lgs-blue text-xs font-bold rounded-full">Disposable</span>
+                        <span class="px-3 py-1 bg-lgs-red/10 text-lgs-red text-xs font-bold rounded-full">Safety Valve</span>
+                        <span class="px-3 py-1 bg-lgs-green/10 text-lgs-green text-xs font-bold rounded-full">Graduated</span>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center font-bold text-lgs-blue hover:text-lgs-red transition group/link">
+                        Request Specifications
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Download Catalog CTA -->
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="700">
+                <div class="inline-flex flex-col items-center p-8 bg-gradient-to-r from-lgs-blue/5 to-lgs-green/5 rounded-2xl border border-lgs-blue/20 shadow-xl">
+                    <i class="fas fa-book-open text-5xl text-lgs-blue mb-4"></i>
+                    <h3 class="text-2xl font-black text-gray-900 mb-2">Complete Product Catalog</h3>
+                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                        Download our comprehensive catalog with detailed specifications, technical drawings, and installation guidelines for all our medical equipment products.
+                    </p>
+                    <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+                       target="_blank"
+                       class="btn-advanced bg-gradient-to-r from-lgs-green to-lgs-blue text-white px-10 py-4 rounded-xl font-bold shadow-xl hover-lift text-lg">
+                        <i class="fas fa-download mr-3"></i> Download Full Product Catalog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise & Stats Section -->
+    <section id="expertise" class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-lgs-green font-extrabold tracking-widest uppercase text-sm pb-1">Manufacturing Excellence</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-black text-gray-900 heading-font">
+                    Advanced Engineering Capabilities
+                </h2>
+                <p class="mt-4 max-w-3xl text-xl text-gray-600 mx-auto">
+                    State-of-the-art manufacturing facilities with precision engineering and quality control systems.
+                </p>
+            </div>
+
+            <!-- Advanced Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center hover-lift" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl font-black bg-gradient-to-r from-lgs-red to-lgs-blue bg-clip-text text-transparent mb-2">10+</div>
+                    <div class="text-lg font-bold text-gray-800">Years Experience</div>
+                    <div class="text-sm text-gray-600 mt-2">Medical Equipment Manufacturing</div>
+                    <div class="mt-4 h-1 w-16 mx-auto bg-gradient-to-r from-lgs-red to-lgs-blue rounded-full"></div>
+                </div>
                 
-                <!-- Product 1: Medical Pendent -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-red"></div>
-                    <div class="h-12 w-12 bg-red-50 rounded-lg flex items-center justify-center mb-4 text-lgs-red">
-                        <i class="fas fa-anchor text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Medical Pendent</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Ergonomic ceiling-mounted supply units for gas, electricity, and data in operating theaters.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-red group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center hover-lift" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl font-black bg-gradient-to-r from-lgs-blue to-lgs-green bg-clip-text text-transparent mb-2">500+</div>
+                    <div class="text-lg font-bold text-gray-800">Projects Completed</div>
+                    <div class="text-sm text-gray-600 mt-2">Across India & International</div>
+                    <div class="mt-4 h-1 w-16 mx-auto bg-gradient-to-r from-lgs-blue to-lgs-green rounded-full"></div>
                 </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center hover-lift" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-5xl font-black bg-gradient-to-r from-lgs-green to-lgs-yellow bg-clip-text text-transparent mb-2">50+</div>
+                    <div class="text-lg font-bold text-gray-800">Hospital Partners</div>
+                    <div class="text-sm text-gray-600 mt-2">Government & Private Healthcare</div>
+                    <div class="mt-4 h-1 w-16 mx-auto bg-gradient-to-r from-lgs-green to-lgs-yellow rounded-full"></div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center hover-lift" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-5xl font-black bg-gradient-to-r from-lgs-yellow to-lgs-red bg-clip-text text-transparent mb-2">100%</div>
+                    <div class="text-lg font-bold text-gray-800">Quality Assurance</div>
+                    <div class="text-sm text-gray-600 mt-2">ISO 9001:2015 Certified Processes</div>
+                    <div class="mt-4 h-1 w-16 mx-auto bg-gradient-to-r from-lgs-yellow to-lgs-red rounded-full"></div>
+                </div>
+            </div>
 
-                <!-- Product 2: Bed Head Panel (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-blue"></div>
-                    <div class="h-12 w-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-lgs-blue">
-                        <i class="fas fa-bed text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Bed Head Panel</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Integrated supply unit providing medical gas outlets, electrical sockets, and communication ports near the patient bed.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-blue group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-
-                <!-- Product 3: ICU Cubical Track & Curtain (UPDATED TITLE) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-green"></div>
-                    <div class="h-12 w-12 bg-green-50 rounded-lg flex items-center justify-center mb-4 text-lgs-green">
-                        <i class="fas fa-columns text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">ICU Cubical Track & Curtain</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Anti-bacterial privacy solutions with smooth-gliding aluminum tracks for intensive care and general wards.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-green group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-
-                <!-- Product 4: Medical Gas Manifold System (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-red"></div>
-                    <div class="h-12 w-12 bg-red-50 rounded-lg flex items-center justify-center mb-4 text-lgs-red">
-                    <i class="fas fa-stream text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Medical Gas Manifold System</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Centralized control panels and manifolds for primary, secondary, and reserve gas supply systems with changeover.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-red group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-
-                <!-- Product 5: Flow Meter & Humidifier (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-blue"></div>
-                    <div class="h-12 w-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-lgs-blue">
-                        <i class="fas fa-lungs text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Flow Meter & Humidifier</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Precise, reliable flow meters and humidification bottles for accurate and comfortable patient gas delivery.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-blue group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-
-                <!-- Product 6: Ward Vacuum Jar Set (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="600">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-green"></div>
-                    <div class="h-12 w-12 bg-green-50 rounded-lg flex items-center justify-center mb-4 text-lgs-green">
-                        <i class="fas fa-flask text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ward Vacuum Jar Set</h3>
-                    <p class="text-gray-500 mb-4 text-sm">Disposable and reusable collection jars and regulators for safe and efficient ward-level suction procedures.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-green group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-
-                <!-- Product 8: Operation Theatre Vacuum Trolley Set (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="700">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-red"></div>
-                    <div class="h-12 w-12 bg-red-50 rounded-lg flex items-center justify-center mb-4 text-lgs-red">
-                        <i class="fas fa-truck-medical text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">OT Vacuum Trolley Set</h3>
-                    <p class="text-gray-500 mb-4 text-sm">High-capacity, mobile suction apparatus built on a sturdy trolley for demanding operating theatre environments.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-red group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-                <!-- Product 9: Semi Automatic Control Panel (NEW) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="700">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-lgs-blue"></div>
-                    <div class="h-12 w-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-lgs-blue">
-                        <i class="fa-gears text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">SEMI AUTOMATIC CONTROL PANEL</h3>
-                    <p class="text-gray-500 mb-4 text-sm">blends automation with manual oversight, featuring intelligent auto-switchover (like gas banks), digital/analog gauges (pressure, flow), audio-visual alarms for alerts, overload/dry-run protection, and robust enclosures for industrial or medical use, offering efficiency, safety, and uninterrupted operations with features like cyclic timers and customizable settings for processes like motor or gas management.</p>
-                    <a href="#contact" class="text-sm font-bold text-lgs-blue group-hover:translate-x-2 transition-transform inline-block">Get Free Estimate <i class="fas fa-arrow-right text-xs ml-1"></i></a>
-                </div>
-                <!-- Product 10u Operation Theater Systems (Wide Card) -->
-                <div class="hover-card bg-white rounded-xl border border-gray-100 p-6 shadow-sm relative overflow-hidden group border-t-4 border-t-lgs-blue lg:col-span-3" data-aos="fade-up" data-aos-delay="800">
-                    <div class="flex flex-col md:flex-row items-center gap-6">
-                        <div class="h-20 w-20 bg-blue-50 rounded-full flex-shrink-0 flex items-center justify-center text-lgs-blue">
-                            <i class="fas fa-notes-medical text-3xl"></i>
+            <!-- Manufacturing Process -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h3 class="text-3xl font-black text-gray-900 mb-6">Advanced Manufacturing Process</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 bg-lgs-red/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-microscope text-xl text-lgs-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-1">Precision Engineering</h4>
+                                <p class="text-gray-600">CNC machining, laser cutting, and robotic welding for millimeter-perfect components.</p>
+                            </div>
                         </div>
-                        <div class="text-center md:text-left flex-grow">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Comprehensive Operation Theater Equipment</h3>
-                            <p class="text-gray-500">Complete modular OT solutions including surgical lights, OT tables, and sterility maintenance systems. Designed for optimal surgical workflow.</p>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 bg-lgs-blue/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-vial text-xl text-lgs-blue"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-1">Material Testing</h4>
+                                <p class="text-gray-600">Medical-grade stainless steel and polymers tested for biocompatibility and durability.</p>
+                            </div>
                         </div>
-                        <div class="flex-shrink-0 mt-4 md:mt-0">
-                            <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="bg-lgs-blue text-white px-6 py-3 rounded-md hover:bg-blue-800 transition font-medium flex items-center">
-                                Download Catalog <i class="fas fa-download ml-2"></i>
-                            </a>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 bg-lgs-green/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-tasks text-xl text-lgs-green"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-1">Quality Control</h4>
+                                <p class="text-gray-600">Three-stage inspection process with pressure testing and leak detection protocols.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 bg-lgs-yellow/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-certificate text-xl text-lgs-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-1">Certification Compliance</h4>
+                                <p class="text-gray-600">All products manufactured to CE and ISO standards with complete documentation.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                
+                <div class="relative" data-aos="fade-left">
+                    <div class="bg-gradient-to-br from-lgs-blue to-lgs-green p-1 rounded-2xl shadow-2xl">
+                        <div class="bg-white rounded-xl p-8">
+                            <h4 class="text-2xl font-black text-gray-900 mb-6 text-center">Manufacturing Specifications</h4>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                    <div class="text-3xl font-black text-lgs-red mb-1">15,000</div>
+                                    <div class="text-sm font-semibold text-gray-600">SQFT Facility</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                    <div class="text-3xl font-black text-lgs-blue mb-1">50+</div>
+                                    <div class="text-sm font-semibold text-gray-600">Skilled Technicians</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                    <div class="text-3xl font-black text-lgs-green mb-1">ISO</div>
+                                    <div class="text-sm font-semibold text-gray-600">Certified Process</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                    <div class="text-3xl font-black text-lgs-yellow mb-1">24/7</div>
+                                    <div class="text-sm font-semibold text-gray-600">Production Capacity</div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-4 bg-lgs-black text-white rounded-xl">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-industry text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-bold">1 Manufacturing Units</div>
+                                        <div class="text-sm opacity-90"> Coimbatore, Tamil Nadu</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-gray-50 py-16 border-t border-gray-200">
+    <section id="contact" class="py-20 bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Request a Consultation</h2>
-                    <p class="text-lg text-gray-500 mb-8">
-                        Get a **free estimate** and consultation from our certified engineering team. We'll help you plan the best medical gas system for your facility.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        
-                        <!-- Corporate Office Address (Primary Contact) -->
-                        <div class="flex items-start p-4 bg-white rounded-lg shadow-sm" data-aos="zoom-in-up" data-aos-delay="100">
-                            <div class="h-10 w-10 bg-lgs-red/10 rounded-full flex items-center justify-center text-lgs-red shadow-sm mr-4 flex-shrink-0">
-                                <i class="fas fa-building text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">Corporate Office Address</h4>
-                                <p class="text-gray-500 text-sm">
-                                    Plot no:224, Jeeva Nagar 1st Street,
-Jaihindupuram, Madurai, TamilNadu - 625011.
-                                </p>
-                            </div>
-                        </div>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-lgs-green font-extrabold tracking-widest uppercase text-sm pb-1">Get In Touch</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-black heading-font">
+                    Request Consultation & Quote
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto">
+                    Connect with our engineering team for customized medical equipment solutions.
+                </p>
+            </div>
 
-                        <!-- Manufacturing Unit Address -->
-                        <div class="flex items-start p-4 bg-white rounded-lg shadow-sm" data-aos="zoom-in-up" data-aos-delay="200">
-                            <div class="h-10 w-10 bg-lgs-blue/10 rounded-full flex items-center justify-center text-lgs-blue shadow-sm mr-4 flex-shrink-0">
-                                <i class="fas fa-warehouse text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">Manufacturing Unit Address</h4>
-                                <p class="text-gray-500 text-sm">
-                                    Indira Nagar 2nd Street, Nanjundapuram Road, Ramanathapuram, Coimbatore 30.
-                                </p>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="lg:col-span-1 space-y-8" data-aos="fade-right">
+                    <div class="dark-glass-morphism p-8 rounded-2xl">
+                        <h3 class="text-2xl font-black mb-6 text-white">Contact Information</h3>
                         
-                        <!-- Contact Numbers -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm" data-aos="zoom-in-up" data-aos-delay="300">
-                            <div class="h-10 w-10 bg-lgs-red/10 rounded-full flex items-center justify-center text-lgs-red shadow-sm mr-4">
-                                <i class="fas fa-phone text-xl"></i>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="h-12 w-12 bg-lgs-red/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-xl text-lgs-red"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Corporate Office</h4>
+                                    <p class="text-gray-300">Plot no:224, Jeeva Nagar 1st Street, Jaihindupuram, Madurai, TamilNadu - 625011</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">Contact Numbers</h4>
-                                <p class="text-gray-500 text-sm"><a href="tel:9629813483" class="hover:text-lgs-red">9629813483</a> / <a href="tel:9659233313" class="hover:text-lgs-red">9659233313</a></p>
+                            
+                            <div class="flex items-start">
+                                <div class="h-12 w-12 bg-lgs-blue/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-warehouse text-xl text-lgs-blue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Manufacturing Unit</h4>
+                                    <p class="text-gray-300">Indira Nagar 2nd Street, Nanjundapuram Road, Ramanathapuram, Coimbatore 641045</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm" data-aos="zoom-in-up" data-aos-delay="400">
-                            <div class="h-10 w-10 bg-lgs-green/10 rounded-full flex items-center justify-center text-lgs-green shadow-sm mr-4">
-                                <i class="fas fa-envelope text-xl"></i>
+                            
+                            <div class="flex items-start">
+                                <div class="h-12 w-12 bg-lgs-green/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-xl text-lgs-green"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Phone Numbers</h4>
+                                    <div class="space-y-1">
+                                        <p class="text-gray-300"><a href="tel:9629813483" class="hover:text-lgs-green transition">+91 96298 13483</a></p>
+                                        <p class="text-gray-300"><a href="tel:9659233313" class="hover:text-lgs-green transition">+91 96592 33313</a></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">Email for Inquiries</h4>
-                                <p class="text-gray-500 text-sm break-all">
-                                    <a href="mailto:lifegas1987@gmail.com" class="hover:text-lgs-green">lifegas1987@gmail.com</a>
-                                    <span class="block text-xs">(Alternate: <a href="mailto:kishoreavinash17@gmail.com" class="hover:text-lgs-green">kishoreavinash17@gmail.com</a>)</span>
-                                </p>
+                            
+                            <div class="flex items-start">
+                                <div class="h-12 w-12 bg-lgs-yellow/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-xl text-lgs-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Email Address</h4>
+                                    <p class="text-gray-300"><a href="mailto:lifegas1987@gmail.com" class="hover:text-lgs-yellow transition">lifegas1987@gmail.com</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="bg-gradient-to-r from-lgs-red to-lgs-yellow p-8 rounded-2xl text-center">
+                        <i class="fas fa-ambulance text-4xl mb-4"></i>
+                        <h4 class="text-xl font-black mb-2">24/7 Emergency Support</h4>
+                        <p class="mb-4">Critical breakdown support for existing installations</p>
+                        <a href="tel:9629813483" class="inline-block bg-white text-lgs-red px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition">
+                            <i class="fas fa-phone-volume mr-2"></i> Emergency Call
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100" data-aos="fade-left">
-                    <form id="contactForm" onsubmit="sendToWhatsapp(event)">
-                        <h3 class="text-2xl font-semibold mb-6">Get Your Free Quote</h3>
-                        <div class="mb-4">
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Name</label>
-                            <input id="name" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Your Name">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
-                            <input id="email" type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="your@email.com">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Product Interest</label>
-                            <select id="product" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white">
-                                <option value="">Select a product...</option>
-                                <!-- UPDATED PRODUCT LIST FOR FORM -->
-                                <option value="Medical Pendent">Medical Pendent</option>
-                                <option value="Bed Head Panel">Bed Head Panel</option>
-                                <option value="ICU Cubical Track & Curtain">ICU Cubical Track & Curtain</option>
-                                <option value="Medical Gas Manifold System">Medical Gas Manifold System</option>
-                                <option value="Flow Meter & Humidifier">Flow Meter & Humidifier</option>
-                                <option value="Ward Vacuum Jar Set">Ward Vacuum Jar Set</option>
-                                <option value="OT Vacuum Trolley Set">OT Vacuum Trolley Set</option>
-                                <option value="OT Equipment (General)">OT Equipment (General)</option>
-                            </select>
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
-                            <textarea id="message" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" rows="3" placeholder="Describe your requirements and facility size..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-md hover:bg-green-700 transition flex justify-center items-center">
-                            <i class="fab fa-whatsapp text-xl mr-2"></i> Get Free Quote via WhatsApp
-                        </button>
-                    </form>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-2" data-aos="fade-left">
+                    <div class="dark-glass-morphism p-8 rounded-2xl">
+                        <h3 class="text-2xl font-black mb-6 text-white">Send Inquiry via WhatsApp</h3>
+                        <form id="contactForm" onsubmit="sendToWhatsapp(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-300 mb-2">Full Name *</label>
+                                    <input type="text" id="name" required 
+                                           class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lgs-blue focus:border-transparent outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-300 mb-2">Email Address *</label>
+                                    <input type="email" id="email" required 
+                                           class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lgs-blue focus:border-transparent outline-none transition">
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-300 mb-2">Phone Number *</label>
+                                    <input type="tel" id="phone" required 
+                                           class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lgs-blue focus:border-transparent outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-300 mb-2">Hospital</label>
+                                    <input type="text" id="organization" 
+                                           class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lbs-blue focus:border-transparent outline-none transition">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">Product Interest</label>
+                                <select id="product" 
+                                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lgs-blue focus:border-transparent outline-none transition">
+                                    <option value="">Select Product Category</option>
+                                    <option value="Medical Pendent">Medical Pendent</option>
+                                    <option value="Bed Head Panel">Bed Head Panel</option>
+                                    <option value="ICU Cubical Track & Curtain">ICU Cubical Track & Curtain</option>
+                                    <option value="Gas Manifold System">Gas Manifold System</option>
+                                    <option value="Flow Meter & Humidifier">Flow Meter & Humidifier</option>
+                                    <option value="Ward Vacuum Jar Set">Ward Vacuum Jar Set</option>
+                                    <option value="Complete Hospital Project">Complete Hospital Project</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">Project Requirements *</label>
+                                <textarea id="message" required rows="4"
+                                          class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-lgs-blue focus:border-transparent outline-none transition"
+                                          placeholder="Describe your project requirements, facility size, timeline, and any specific needs..."></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-lgs-green to-lgs-blue text-white py-4 rounded-xl font-bold shadow-xl hover-lift flex items-center justify-center text-lg">
+                                <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                                Send Inquiry via WhatsApp
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-12 pb-4">
+    <footer class="bg-lgs-black text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                
-                <!-- Column 1: Information -->
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-lg font-semibold mb-4 text-white border-b border-gray-700 pb-2">Information</h4>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Life Gas Systems is a certified manufacturer dedicated to providing safe and reliable medical gas pipeline and infrastructure solutions globally.
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="logo-t.webp" alt="LGS Logo" class="h-12 w-auto mr-3" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFFFFF/0A0A0A?text=LGS'">
+                        <div>
+                            <h3 class="text-2xl font-black heading-font">LIFE GAS SYSTEMS</h3>
+                            <p class="text-xs text-gray-400">Medical Equipment Manufacturer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        CE & ISO 9001:2015 certified manufacturer of medical gas pipeline systems and critical care equipment.
                     </p>
-                    <a href="https://lgs.co.in" target="_blank" class="text-lgs-blue hover:text-blue-400 text-sm font-medium transition inline-flex items-center">
-                        <i class="fas fa-globe mr-2"></i> Official Website: lgs.co.in
-                    </a>
-                </div>
-
-                <!-- Column 2: Quick Links -->
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-lg font-semibold mb-4 text-white border-b border-gray-700 pb-2">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#products" class="hover:text-lgs-blue transition"><i class="fas fa-angle-right mr-2"></i> Our Products</a></li>
-                        <li><a href="#stats" class="hover:text-lgs-blue transition"><i class="fas fa-angle-right mr-2"></i> Company Expertise</a></li>
-                        <li><a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="hover:text-lgs-blue transition"><i class="fas fa-angle-right mr-2"></i> Download Catalog</a></li>
-                        <li><a href="#contact" class="hover:text-lgs-blue transition"><i class="fas fa-angle-right mr-2"></i> Get Free Estimate</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Working Hours & Support Status -->
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-lg font-semibold mb-4 text-white border-b border-gray-700 pb-2">Working Hours</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li class="font-bold text-white">Monday - Sunday: 9:00 AM - 5:00 PM</li>
-                        <li>
-                            <i class="fas fa-clock mr-2"></i> Office Status: <span id="office-status" class="font-bold">--</span>
-                        </li>
-                    </ul>
-                    <div class="mt-4 p-3 rounded-lg bg-lgs-red/20 border border-lgs-red/50">
-                        <p class="text-lgs-red font-bold text-sm flex items-center">
-                             <i class="fas fa-heart-circle-bolt mr-2 text-lg"></i> 24/7 EMERGENCY SERVICE
-                        </p>
-                        <p class="text-xs text-gray-300 mt-1">
-                            For urgent needs, call our emergency line anytime.
-                        </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/919629813483" target="_blank" class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-lgs-green transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:lifegas1987@gmail.com" class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-lgs-red transition">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:9629813483" class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-lgs-blue transition">
+                            <i class="fas fa-phone"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Column 4: Certs & Contact -->
-                <div data-aos="fade-up" data-aos-delay="400">
-                    <h4 class="text-lg font-semibold mb-4 text-white border-b border-gray-700 pb-2">Location</h4>
-                    <p class="text-gray-400 text-sm mb-2 font-semibold">Corporate Office (Madurai):</p>
-                    <p class="text-gray-400 text-xs">
-                    Plot no:224, Jeeva Nagar 1st Street,
-Jaihindupuram, Madurai, TamilNadu - 625011.
-                    </p>
-                    <p class="text-gray-400 text-sm mt-3 mb-2 font-semibold">Manufacturing Unit (Coimbatore):</p>
-                    <p class="text-gray-400 text-xs">
-                        Indira Nagar 2nd Street, Nanjundapuram Road, Ramanathapuram, Coimbatore 30
-                    </p>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-lgs-red transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-lgs-blue transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Products</a></li>
+                        <li><a href="#expertise" class="text-gray-400 hover:text-lgs-green transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Expertise</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-lgs-yellow transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Certifications</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 bg-lgs-red/20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-check-circle text-lgs-red"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">CE Certified</p>
+                                <p class="text-sm text-gray-400">Medical Device Directive</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 bg-lgs-blue/20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-award text-lgs-blue"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">ISO 9001:2015</p>
+                                <p class="text-sm text-gray-400">Quality Management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Resources</h4>
+                    <div class="space-y-4">
+                        <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit?utm_content=DAG6wA1DBx8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+                           target="_blank"
+                           class="flex items-center p-4 bg-gray-800 rounded-xl hover:bg-gray-700 transition group">
+                            <i class="fas fa-file-pdf text-2xl text-lgs-red mr-3"></i>
+                            <div>
+                                <p class="font-bold">Product Catalog</p>
+                                <p class="text-sm text-gray-400">Complete specifications</p>
+                            </div>
+                        </a>
+                        
+                        <a href="Brochure.pdf" download
+                           class="flex items-center p-4 bg-gray-800 rounded-xl hover:bg-gray-700 transition group">
+                            <i class="fas fa-download text-2xl text-lgs-blue mr-3"></i>
+                            <div>
+                                <p class="font-bold">Company Brochure</p>
+                                <p class="text-sm text-gray-400">Company profile & services</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
             
             <!-- Bottom Bar -->
-            <div class="border-t border-gray-800 pt-4 mt-8 text-center">
-                <p class="text-gray-500 text-sm">© 2025 Life Gas Systems. All rights reserved. | Design by <span class="font-bold text-lgs-blue">Mourish Developers</span></p>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400 text-sm mb-2">© 2025 Life Gas Systems. All rights reserved. | CE & ISO 9001:2015 Certified Manufacturer |<div class="text-blue-400">Design By Mourish Developers</div> </p>
+                <p class="text-gray-500 text-xs">Manufacturing Unit: Coimbatore, Tamil Nadu, India</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919629813483?text=Hi%2C%20I%20visited%20your%20website%20and%20want%20to%20know%20more." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/919629813483?text=Hi%20Life%20Gas%20Systems%2C%20I%20visited%20your%20website%20and%20need%20information%20about%20your%20products." 
+       target="_blank"
+       class="fixed bottom-8 right-8 h-16 w-16 bg-gradient-to-r from-lgs-green to-lgs-blue text-white rounded-full flex items-center justify-center shadow-2xl hover-lift z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <!-- AOS (Animate On Scroll) Library JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    <script>
+    <!-- AOS Script -->
+       <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000, // Duration of animation
-            once: true,     // Only animate once
-            mirror: false   // Don't repeat on scroll up
+            duration: 1000,
+            once: true,
+            mirror: false,
+            offset: 100
         });
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // WhatsApp Form Sender
+        // Close mobile menu when clicking links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // WhatsApp Form Handler
         function sendToWhatsapp(e) {
             e.preventDefault();
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const organization = document.getElementById('organization').value;
             const product = document.getElementById('product').value;
             const message = document.getElementById('message').value;
+            
+            const phoneNumber = "919629813483";
+            
+            const whatsappMessage = `*New Inquiry - Life Gas Systems Website*
+            
+*Name:* ${encodeURIComponent(name)}
+*Email:* ${encodeURIComponent(email)}
+*Phone:* ${encodeURIComponent(phone)}
+*Organization:* ${encodeURIComponent(organization || 'Not specified')}
+*Product Interest:* ${encodeURIComponent(product || 'General Inquiry')}
 
-            const phonenumber = "919629813483";
+*Requirements:*
+${encodeURIComponent(message)}
 
-            // Construct URL-encoded message
-            const url = "https://wa.me/" + phonenumber + "?text="
-            + "*New Quote Request from Website*" + "%0a"
-            + "*Name:* " + name + "%0a"
-            + "*Email:* " + email + "%0a"
-            + "*Product Interest:* " + (product ? product : 'General Inquiry') + "%0a"
-            + "*Requirements:* " + message;
-
-            // Open WhatsApp in a new tab
-            window.open(url, '_blank').focus();
+*Sent from:* ${window.location.href}`;
+            
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            window.open(whatsappURL, '_blank');
         }
 
-        // Dynamic Office Status
+        // Office Hours Status
         function updateOfficeStatus() {
-            const statusElement = document.getElementById('office-status');
-            if (!statusElement) return;
-
             const now = new Date();
             const hour = now.getHours();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
             
-            // Office Hours: 9:00 AM (9) to 5:00 PM (17) for all days (0-6)
-            const openHour = 9;
-            const closeHour = 17;
-
-            // Check if it's within working hours
-            const isOpen = hour >= openHour && hour < closeHour;
-
-            if (isOpen) {
-                statusElement.textContent = 'Open Now';
-                statusElement.classList.remove('text-red-500');
-                statusElement.classList.add('text-lgs-green');
-            } else {
-                statusElement.textContent = 'Closed';
-                statusElement.classList.remove('text-lgs-green');
-                statusElement.classList.add('text-red-500');
+            // Office hours: Monday-Saturday, 9 AM to 6 PM
+            const isWeekday = day >= 1 && day <= 6;
+            const isWorkingHour = hour >= 9 && hour < 18;
+            
+            const statusElement = document.getElementById('officeStatus');
+            if (statusElement) {
+                if (isWeekday && isWorkingHour) {
+                    statusElement.textContent = 'Open Now';
+                    statusElement.className = 'px-3 py-1 rounded-full text-xs font-bold bg-lgs-green text-white';
+                } else {
+                    statusElement.textContent = 'Closed';
+                    statusElement.className = 'px-3 py-1 rounded-full text-xs font-bold bg-lgs-red text-white';
+                }
             }
         }
 
-        // Initialize dynamic status on load
+        // Initialize
         updateOfficeStatus();
-        // Update status every minute
-        setInterval(updateOfficeStatus, 60000);
+        setInterval(updateOfficeStatus, 60000); // Update every minute
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
     </script>
 </body>
 </html>
-
