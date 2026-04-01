@@ -51,17 +51,18 @@
         }
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
         .gallery-img-box {
             aspect-ratio: 1 / 1;
             background: #0f172a;
             border-radius: 1.25rem;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
         }
         .gallery-img-box:hover {
             transform: scale(1.02);
@@ -76,6 +77,20 @@
         }
         .gallery-img-box:hover img {
             transform: scale(1.05);
+        }
+        .image-number {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #38bdf8;
+            font-family: monospace;
+            z-index: 2;
         }
         .section-badge {
             background: linear-gradient(120deg, #0ea5e9, #0284c7);
@@ -95,6 +110,24 @@
             z-index: 0;
             pointer-events: none;
         }
+        .client-badge {
+            background: rgba(14, 165, 233, 0.1);
+            border-left: 3px solid #0ea5e9;
+            padding: 10px 12px;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        .client-badge:hover {
+            background: rgba(14, 165, 233, 0.2);
+        }
+        .upload-hint {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px dashed #0ea5e9;
+            border-radius: 12px;
+            padding: 8px 16px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
     </style>
 </head>
 <body class="bg-[#020617]">
@@ -112,12 +145,15 @@
                     <p class="text-[9px] text-sky-400 font-bold tracking-[0.2em] uppercase">Advanced Medical Engineering</p>
                 </div>
             </div>
-            <div class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-wider text-slate-300">
+            <div class="hidden md:flex gap-6 text-xs font-semibold uppercase tracking-wider text-slate-300">
                 <a href="index.html" class="hover:text-sky-400 transition"><i class="fas fa-home mr-1"></i>Home</a>
                 <a href="#pendant-gallery" class="hover:text-sky-400 transition">Pendants</a>
                 <a href="#control-gallery" class="hover:text-sky-400 transition">Control</a>
                 <a href="#vacuum-gallery" class="hover:text-sky-400 transition">Vacuum</a>
-                <a href="#flow-gallery" class="hover:text-sky-400 transition">Flow Meters</a>
+                <a href="#flow-gallery" class="hover:text-sky-400 transition">Flow</a>
+                <a href="#bhp-gallery" class="hover:text-sky-400 transition">BHP</a>
+                <a href="#curtain-gallery" class="hover:text-sky-400 transition">Curtains</a>
+                <a href="#manifold-gallery" class="hover:text-sky-400 transition">Manifold</a>
                 <a href="#clients" class="hover:text-sky-400 transition">Clients</a>
                 <a href="#contact-foot" class="hover:text-sky-400 transition">Contact</a>
             </div>
@@ -133,11 +169,15 @@
         <div class="max-w-7xl mx-auto text-center">
             <div class="inline-flex gap-2 bg-white/5 border border-white/10 px-5 py-2 rounded-full text-[11px] text-sky-400 mb-5"><i class="fas fa-cubes"></i> Manufacturing Showcase</div>
             <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.2]">Product Deep-Dive <span class="gradient-text">Galleries</span></h1>
-            <p class="text-slate-400 max-w-2xl mx-auto mt-5 text-lg">Each product line features 10+ high-resolution images — detailing engineering precision, installation views, and quality benchmarks.</p>
+            <p class="text-slate-400 max-w-2xl mx-auto mt-5 text-lg">Each product line features 10 image slots — upload your own product photos</p>
+            <div class="upload-hint inline-flex items-center gap-2 mt-6 px-4 py-2">
+                <i class="fas fa-cloud-upload-alt text-sky-400"></i>
+               
+            </div>
         </div>
     </section>
 
-    <!-- ===================== 1. MEDICAL PENDANTS SECTION (10 IMAGES) ===================== -->
+    <!-- ===================== 1. MEDICAL PENDANTS (10 IMAGE SLOTS) ===================== -->
     <section id="pendant-gallery" class="product-section px-6 py-16 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center gap-4 mb-8">
@@ -146,13 +186,22 @@
                     <h2 class="text-3xl md:text-4xl font-bold">Medical Pendants <span class="text-sky-400">Series</span></h2>
                     <p class="text-slate-400 text-sm mt-1">Single arm • Double arm • Rigid pendants for ICU & OT</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 assets</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
             <div class="image-grid" id="pendant-grid">
-                <!-- 10 image boxes - replace src with your actual files -->
-                <!-- You will replace the src attribute with your image paths (e.g., "pendant1.jpg" ... "pendant10.jpg") -->
+                <!-- 10 image boxes - REPLACE src with your actual image files -->
+                <div class="gallery-img-box"><img src="pendant1.jpg" alt="Pendant 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="pendant2.jpg" alt="Pendant 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="pendant3.jpg" alt="Pendant 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="pendant4.jpg" alt="Pendant 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="pendant5.jpg" alt="Pendant 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="pendant6.jpg" alt="Pendant 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="pendant7.jpg" alt="Pendant 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="pendant8.jpg" alt="Pendant 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="pendant9.jpg" alt="Pendant 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="pendant10.jpg" alt="Pendant 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pendant+10'"><div class="image-number">10/10</div></div>
             </div>
-            <div class="mt-8 text-center text-slate-500 text-xs border-t border-white/10 pt-6 flex justify-between flex-wrap"><span><i class="fas fa-download text-sky-400"></i> Double-arm, gas outlets, rotational mechanism</span><button onclick="inquiryProduct('Medical Pendants')" class="text-sky-400 hover:underline text-sm">Request full catalog →</button></div>
+            <div class="mt-8 text-center text-slate-500 text-xs border-t border-white/10 pt-6"><i class="fas fa-folder-open text-sky-400"></i> Replace pendant1.jpg ... pendant10.jpg with your actual images</div>
         </div>
     </section>
 
@@ -160,15 +209,25 @@
     <section id="control-gallery" class="product-section px-6 py-16 relative z-10 bg-slate-950/30">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center gap-4 mb-8">
-                <div class="section-badge bg-cyan-500"></div>
+                <div class="section-badge"></div>
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold">Semi-Auto Control <span class="text-sky-400">Panels</span></h2>
                     <p class="text-slate-400 text-sm">Oxygen / Nitrous oxide • Digital alarms • Gas-specific regulators</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 visuals</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="control-grid"></div>
-            <div class="mt-8 text-center text-slate-500 text-xs border-t border-white/10 pt-6"><i class="fas fa-chart-line text-sky-400"></i> CE certified monitoring & safety shutoffs</div>
+            <div class="image-grid" id="control-grid">
+                <div class="gallery-img-box"><img src="control1.jpg" alt="Control 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="control2.jpg" alt="Control 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="control3.jpg" alt="Control 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="control4.jpg" alt="Control 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="control5.jpg" alt="Control 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="control6.jpg" alt="Control 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="control7.jpg" alt="Control 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="control8.jpg" alt="Control 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="control9.jpg" alt="Control 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="control10.jpg" alt="Control 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Control+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
@@ -181,10 +240,20 @@
                     <h2 class="text-3xl md:text-4xl font-bold">Ward Vacuum Jar <span class="text-sky-400">Set</span></h2>
                     <p class="text-slate-400 text-sm">High suction capacity • Anti-microbial reservoirs • Modular assembly</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 images</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="vacuum-grid"></div>
-            <div class="mt-8 text-center text-slate-500 text-xs border-t border-white/10 pt-6"><i class="fas fa-shield-alt text-sky-400"></i> Ideal for ICU & emergency wards</div>
+            <div class="image-grid" id="vacuum-grid">
+                <div class="gallery-img-box"><img src="vacuum1.jpg" alt="Vacuum 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum2.jpg" alt="Vacuum 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum3.jpg" alt="Vacuum 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum4.jpg" alt="Vacuum 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum5.jpg" alt="Vacuum 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum6.jpg" alt="Vacuum 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum7.jpg" alt="Vacuum 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum8.jpg" alt="Vacuum 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum9.jpg" alt="Vacuum 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="vacuum10.jpg" alt="Vacuum 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Vacuum+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
@@ -197,10 +266,20 @@
                     <h2 class="text-3xl md:text-4xl font-bold">Precision Flow <span class="text-sky-400">Meters</span></h2>
                     <p class="text-slate-400 text-sm">O₂, N₂O, Medical Air • ±2% accuracy • Color-coded bodies</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 detailed shots</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="flow-grid"></div>
-            <div class="mt-8 text-center text-slate-500 text-xs border-t border-white/10 pt-6"><i class="fas fa-tachometer-alt text-sky-400"></i> Compatible with all central gas systems</div>
+            <div class="image-grid" id="flow-grid">
+                <div class="gallery-img-box"><img src="flow1.jpg" alt="Flow 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="flow2.jpg" alt="Flow 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="flow3.jpg" alt="Flow 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="flow4.jpg" alt="Flow 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="flow5.jpg" alt="Flow 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="flow6.jpg" alt="Flow 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="flow7.jpg" alt="Flow 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="flow8.jpg" alt="Flow 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="flow9.jpg" alt="Flow 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="flow10.jpg" alt="Flow 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Flow+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
@@ -213,10 +292,20 @@
                     <h2 class="text-3xl md:text-4xl font-bold">Bed Head <span class="text-sky-400">Panels</span></h2>
                     <p class="text-slate-400 text-sm">Integrated gas outlets, nurse call, lighting & electrical sockets</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 variations</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="bhp-grid"></div>
-            <div class="mt-8 text-center text-slate-500 text-xs">Customizable finishes & zone configurations</div>
+            <div class="image-grid" id="bhp-grid">
+                <div class="gallery-img-box"><img src="bhp1.jpg" alt="BHP 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="bhp2.jpg" alt="BHP 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="bhp3.jpg" alt="BHP 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="bhp4.jpg" alt="BHP 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="bhp5.jpg" alt="BHP 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="bhp6.jpg" alt="BHP 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="bhp7.jpg" alt="BHP 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="bhp8.jpg" alt="BHP 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="bhp9.jpg" alt="BHP 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="bhp10.jpg" alt="BHP 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=BHP+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
@@ -229,9 +318,20 @@
                     <h2 class="text-3xl md:text-4xl font-bold">ICU Curtain Tracks <span class="text-sky-400">& Systems</span></h2>
                     <p class="text-slate-400 text-sm">Antimicrobial curtains • Smooth glide • Modular ceiling tracks</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 gallery</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="curtain-grid"></div>
+            <div class="image-grid" id="curtain-grid">
+                <div class="gallery-img-box"><img src="curtain1.jpg" alt="Curtain 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="curtain2.jpg" alt="Curtain 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="curtain3.jpg" alt="Curtain 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="curtain4.jpg" alt="Curtain 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="curtain5.jpg" alt="Curtain 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="curtain6.jpg" alt="Curtain 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="curtain7.jpg" alt="Curtain 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="curtain8.jpg" alt="Curtain 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="curtain9.jpg" alt="Curtain 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="curtain10.jpg" alt="Curtain 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Curtain+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
@@ -244,13 +344,24 @@
                     <h2 class="text-3xl md:text-4xl font-bold">Manifold <span class="text-sky-400">Systems</span></h2>
                     <p class="text-slate-400 text-sm">Automatic changeover • High-flow gas banks • Medical central supply</p>
                 </div>
-                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 industrial shots</div>
+                <div class="ml-auto text-sky-400 text-sm bg-white/5 px-4 py-1.5 rounded-full"><i class="fas fa-images mr-1"></i>10 image slots</div>
             </div>
-            <div class="image-grid" id="manifold-grid"></div>
+            <div class="image-grid" id="manifold-grid">
+                <div class="gallery-img-box"><img src="manifold1.jpg" alt="Manifold 1" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+1'"><div class="image-number">1/10</div></div>
+                <div class="gallery-img-box"><img src="manifold2.jpg" alt="Manifold 2" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+2'"><div class="image-number">2/10</div></div>
+                <div class="gallery-img-box"><img src="manifold3.jpg" alt="Manifold 3" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+3'"><div class="image-number">3/10</div></div>
+                <div class="gallery-img-box"><img src="manifold4.jpg" alt="Manifold 4" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+4'"><div class="image-number">4/10</div></div>
+                <div class="gallery-img-box"><img src="manifold5.jpg" alt="Manifold 5" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+5'"><div class="image-number">5/10</div></div>
+                <div class="gallery-img-box"><img src="manifold6.jpg" alt="Manifold 6" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+6'"><div class="image-number">6/10</div></div>
+                <div class="gallery-img-box"><img src="manifold7.jpg" alt="Manifold 7" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+7'"><div class="image-number">7/10</div></div>
+                <div class="gallery-img-box"><img src="manifold8.jpg" alt="Manifold 8" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+8'"><div class="image-number">8/10</div></div>
+                <div class="gallery-img-box"><img src="manifold9.jpg" alt="Manifold 9" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+9'"><div class="image-number">9/10</div></div>
+                <div class="gallery-img-box"><img src="manifold10.jpg" alt="Manifold 10" onerror="this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Manifold+10'"><div class="image-number">10/10</div></div>
+            </div>
         </div>
     </section>
 
-    <!-- =============== CLIENT SECTION (as per original brief with full list) =============== -->
+    <!-- =============== CLIENT SECTION (full list from brief) =============== -->
     <section id="clients" class="px-6 py-20 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-14">
@@ -262,30 +373,34 @@
                 <div class="glass-card p-7 rounded-2xl">
                     <div class="flex items-center gap-3 border-b border-sky-500/30 pb-3 mb-5"><i class="fas fa-hospital-user text-sky-400 text-2xl"></i><h3 class="text-2xl font-bold">Private Hospitals</h3></div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Ariyallur</span><p class="font-semibold">Ezhi Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Ariyallur</span><p class="font-semibold">Karparaksha Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Madhavaram</span><p class="font-semibold">St. Antony Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Ramanadhapuram</span><p class="font-semibold">Natraj Cardio Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Thoothokudi</span><p class="font-semibold">Deiva Nursing Home</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Thoothokudi</span><p class="font-semibold">Nala Thambi Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Thoothokudi</span><p class="font-semibold">Rajeshwari Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Vedharanyam</span><p class="font-semibold">Pranav Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Ariyallur</span><p class="font-semibold">Ezhi Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Ariyallur</span><p class="font-semibold">Karparaksha Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Madhavaram</span><p class="font-semibold">St. Antony Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Ramanadhapuram</span><p class="font-semibold">Natraj Cardio Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Thoothokudi</span><p class="font-semibold">Deiva Nursing Home</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Thoothokudi</span><p class="font-semibold">Nala Thambi Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Thoothokudi</span><p class="font-semibold">Rajeshwari Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs block">Vedharanyam</span><p class="font-semibold">Pranav Hospital</p></div>
                     </div>
                 </div>
                 <div class="glass-card p-7 rounded-2xl">
                     <div class="flex items-center gap-3 border-b border-sky-500/30 pb-3 mb-5"><i class="fas fa-landmark text-sky-400 text-2xl"></i><h3 class="text-2xl font-bold">Government Institutions</h3></div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Dindugal</span><p>Govt. Hospital</p></div><div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Melur</span><p>Melur GH</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Madurai</span><p>Madurai Medical College</p></div><div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Nagarcoil</span><p>District Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Ottanchachiram</span><p>Taluk Hospital</p></div><div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Palani</span><p>Govt. Hospital</p></div>
-                        <div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Trichy</span><p>MGM Govt. Hospital</p></div><div class="bg-white/5 p-3 rounded-xl"><span class="text-sky-300 text-xs">Valliyur</span><p>Primary Health Centre</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Dindugal</span><p>Govt. Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Melur</span><p>Melur GH</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Madurai</span><p>Madurai Medical College</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Nagarcoil</span><p>District Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Ottanchachiram</span><p>Taluk Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Palani</span><p>Govt. Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Trichy</span><p>MGM Govt. Hospital</p></div>
+                        <div class="client-badge"><span class="text-sky-300 text-xs">Valliyur</span><p>Primary Health Centre</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section (footer style) -->
+    <!-- Contact Section -->
     <section id="contact-foot" class="py-20 px-6 relative z-10">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14">
             <div><h2 class="text-5xl font-bold mb-6">Engineer the <span class="text-sky-400">Next-Gen</span> Facility</h2>
@@ -341,41 +456,17 @@
     </script>
 
     <script>
-        // Helper to generate 10 image boxes for each section (placeholder images but you replace with actual file paths)
-        function generateImageGrid(containerId, baseName, startNumber = 1) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = '';
-            for (let i = 1; i <= 10; i++) {
-                const imgSrc = `${baseName}${i}.jpg`;  // CHANGE THIS: replace with your actual image paths like "pendant_1.jpg", etc.
-                // Fallback dynamic unsplash placeholder if image missing, but user will replace with real files.
-                const fallback = `https://placehold.co/400x400/0f172a/38bdf8?text=${encodeURIComponent(baseName.split('/').pop() || 'img')}+${i}`;
-                const div = document.createElement('div');
-                div.className = 'gallery-img-box';
-                div.innerHTML = `<img src="${imgSrc}" alt="${baseName} view ${i}" onerror="this.src='${fallback}'">`;
-                div.onclick = () => window.open(imgSrc, '_blank');
-                container.appendChild(div);
-            }
-        }
-        // Define naming convention: replace with your actual folder/filenames (e.g., "pendant_", "control_", etc.)
-        // You will manually upload 10 images each: pendant1.jpg ... pendant10.jpg, control1.jpg ... control10.jpg, etc.
-        generateImageGrid('pendant-grid', 'pendant', 1);
-        generateImageGrid('control-grid', 'control_panel', 1);
-        generateImageGrid('vacuum-grid', 'vacuum_jar', 1);
-        generateImageGrid('flow-grid', 'flow_meter', 1);
-        generateImageGrid('bhp-grid', 'bedhead_panel', 1);
-        generateImageGrid('curtain-grid', 'curtain_track', 1);
-        generateImageGrid('manifold-grid', 'manifold_system', 1);
-
-        function inquiryProduct(product) { window.open(`https://wa.me/919629813483?text=${encodeURIComponent(`Life Gas inquiry: ${product} - Request technical datasheet.`)}`, '_blank'); }
         function handleFooterInquiry(e) { e.preventDefault(); const name = document.getElementById('inquiryName').value; const msg = document.getElementById('inquiryMsg').value; window.open(`https://wa.me/919629813483?text=${encodeURIComponent(`*LGS Inquiry*\nClient: ${name}\nRequirement: ${msg}`)}`, '_blank'); }
-        window.inquiryProduct = inquiryProduct;
         window.handleFooterInquiry = handleFooterInquiry;
+        // Click to enlarge any image
+        document.querySelectorAll('.gallery-img-box').forEach(box => {
+            box.addEventListener('click', () => {
+                const img = box.querySelector('img');
+                if(img && img.src && !img.src.includes('placehold')) {
+                    window.open(img.src, '_blank');
+                }
+            });
+        });
     </script>
-    <style>
-        .gallery-img-box img { object-fit: cover; width: 100%; height: 100%; }
-        .product-section { scroll-margin-top: 85px; }
-        .glass-card { background: rgba(15, 25, 45, 0.65); backdrop-filter: blur(10px); }
-    </style>
 </body>
 </html>
