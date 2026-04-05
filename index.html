@@ -3,544 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Gas System| Manufacturing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Life Gas System | ISO 9001:2015 & CE Certified Medical Engineering</title>
+    <!-- Favicon -->
     <link rel="icon" href="logo-t.webp" type="image/webp">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono&family=Outfit:wght@300;400;600;800&display=swap');
+
         :root {
-            --primary: #0ea5e9;
-            --secondary: #0f172a;
-            --accent: #38bdf8;
-            --glass: rgba(255, 255, 255, 0.03);
+            --brand-yellow: #FACC15;
+            --soft-ivory: #FDFCF7;
+            --deep-slate: #0F172A;
+            --border-muted: rgba(15, 23, 42, 0.08);
         }
-
+        
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #020617;
-            color: #f8fafc;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--soft-ivory);
+            color: var(--deep-slate);
         }
 
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
         }
 
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        .mono {
+            font-family: 'Space Mono', monospace;
         }
 
-        .glass-card:hover {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.05);
-            transform: translateY(-10px) scale(1.02);
+        /* Industrial Grid Overlay */
+        .grid-bg {
+            background-image: radial-gradient(var(--border-muted) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+        .hero-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--soft-ivory) 100%);
         }
 
-        .hero-glow {
+        .card-premium {
+            background: white;
+            border: 1px solid var(--border-muted);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .card-premium:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px -15px rgba(15, 23, 42, 0.1);
+            border-color: var(--brand-yellow);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .nav-link::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            height: 80vw;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
-            z-index: -1;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-yellow);
+            transition: width 0.3s ease;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #f8fafc 0%, #38bdf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        .btn-core {
+            background: var(--deep-slate);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+        .btn-core:hover {
+            background: #1e293b;
+            padding-right: 3rem;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+        .spec-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+        /* Professional Footer Styles */
+        .footer-link {
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .footer-link:hover {
+            color: var(--brand-yellow);
+            transform: translateX(4px);
+        }
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .social-btn:hover {
+            background: var(--brand-yellow);
+            color: var(--deep-slate);
+            border-color: var(--brand-yellow);
+            transform: translateY(-3px);
         }
     </style>
 </head>
-<body>
+<body class="antialiased grid-bg">
 
-    <div id="canvas-container">
-        <canvas id="smoke-canvas"></canvas>
+    <!-- Top Info Strip -->
+    <div class="bg-white border-b border-slate-100 py-3 px-6 hidden lg:block">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <span class="spec-label">GSTIN</span>
+                    <span class="text-[11px] font-bold text-slate-600">33BTKPP2289J1Z7</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="spec-label">HSN CODES</span>
+                    <span class="text-[11px] font-bold text-slate-600">9018 / 9033</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="mailto:lifegas1987@gmail.com" class="text-[11px] font-bold text-slate-600 hover:text-yellow-600 transition-colors">
+                    <i class="far fa-envelope mr-1 text-yellow-500"></i> lifegas1987@gmail.com
+                </a>
+                <div class="flex items-center gap-2">
+                    <span class="bg-yellow-400 px-3 py-1 text-[9px] font-black uppercase tracking-tighter">ISO 9001:2015 Verified</span>
+                    <span class="bg-slate-900 text-white px-3 py-1 text-[9px] font-black uppercase tracking-tighter">CE Certified</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Nav -->
-    <nav class="fixed w-full z-50 glass-dark px-6 py-4 border-b border-white/5">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div>
-                    <img class="w-10 h-10 bg-white-500 rounded-xl flex items-center justify-center" src="logo-t.webp"/>
-                </div>
-                    <h1 class="font-bold text-xl tracking-tight leading-none text-white">LIFE GAS SYSTEM</h1>
-                    <p class="text-[9px] text-sky-400 font-bold tracking-[0.2em] uppercase">Advanced Medical Engineering</p>
+    <!-- Main Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/60">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo-t.webp" alt="LGS Logo" class="h-11 w-auto mr-4" onerror="this.src='https://via.placeholder.com/44'">
+                <div class="border-l-2 border-slate-100 pl-4">
+                    <span class="text-2xl font-black tracking-tighter text-slate-900 block leading-none">LIFE GAS <span class="text-yellow-500">SYSTEM</span></span>
+                    <span class="mono text-[9px] text-slate-400 font-bold uppercase tracking-[0.3em]">Precision Engineering</span>
                 </div>
             </div>
-            <div class="hidden lg:flex gap-10 font-semibold text-xs uppercase tracking-widest text-slate-400">
-                <a href="#about" class="hover:text-sky-400 transition">Evolution</a>
-                <a href="#products" class="hover:text-sky-400 transition">Infrastructure</a>
-                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
-                <a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit" target="_blank" class="text-sky-400 border-b border-sky-400/30 pb-1">Catalog</a>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/919629813483" target="_blank" class="hidden sm:block text-xs font-bold text-sky-400 border border-sky-400/30 px-4 py-2 rounded-lg hover:bg-sky-400/10 transition">24/7 EMERGENCY</a>
-                <button onclick="scrollToId('contact')" class="bg-sky-500 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-sky-400 transition shadow-xl shadow-sky-500/20">Inquiry Now</button>
+            
+            <div class="hidden lg:flex items-center space-x-12">
+                <a href="#home" class="nav-link text-slate-900">Index</a>
+                <a href="#solutions" class="nav-link text-slate-900">Systems</a>
+                <a href="#about" class="nav-link text-slate-900">The Unit</a>
+                <a href="gallerys.html" class="nav-link text-slate-900">Gallery</a>
+                <a href="#contact" class="btn-core rounded-full shadow-lg shadow-slate-200">
+                    Request BOQ <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
-        <div class="hero-glow"></div>
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center z-10">
-            <div>
-                <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[10px] font-bold tracking-widest text-sky-400 mb-8 uppercase">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-                    </span>
-                    ISO 9001:2015 & CE Certified Manufacturing
-                </div>
-                <h2 class="text-6xl lg:text-8xl font-bold leading-[1.1] mb-8">
-                    The Gold Standard of <span class="gradient-text">Medical Gas.</span>
-                </h2>
-                <p class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed font-light">
-                    Life-critical infrastructure designed for precision. From robotic pendants to high-flow manifolds, we engineer the pulse of modern healthcare environments.
-                </p>
-                <div class="flex flex-wrap gap-6 items-center">
-                    <button onclick="scrollToId('products')" class="px-10 py-5 bg-sky-500 rounded-2xl font-bold text-white hover:bg-sky-400 transition-all shadow-2xl shadow-sky-500/30">View Infrastructure</button>
-                    <div class="flex -space-x-3">
-                        <img class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center" src="ISO9001-2015-1.jpg"/>
-                        <img class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center" src="images.png"/>
-                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-sky-500 flex items-center justify-center text-[10px] font-bold">24/7</div>
+    <!-- Refined Hero Section -->
+    <section id="home" class="hero-gradient relative pt-20 pb-32 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-up">
+                    <div class="inline-block bg-white border border-slate-200 px-4 py-2 rounded-full mb-8">
+                        <span class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            Production Active: Coimbatore Unit
+                        </span>
                     </div>
-                </div>
-            </div>
-            <div class="relative hidden lg:block">
-                <div class="floating">
-                    <!-- Premium 3D Render Placeholder -->
-                    <div class="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1000" alt="OT Environment" class="w-full h-full object-cover grayscale-[0.2] contrast-125">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                    </div>
-                    <!-- Decorative Elements -->
-                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-sky-500/20 blur-[80px] rounded-full"></div>
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/10 blur-[60px] rounded-full"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stat Bar -->
-    <div class="bg-white/5 border-y border-white/5 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
-            <div class="p-8 text-center">
-                <p class="text-3xl font-bold text-white mb-1">2 HR</p>
-                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Max Response Time</p>
-            </div>
-            <div class="p-8 text-center">
-                <p class="text-3xl font-bold text-white mb-1">2025</p>
-                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Established Reliability</p>
-            </div>
-            <div class="p-8 text-center">
-                <p class="text-3xl font-bold text-white mb-1">100%</p>
-                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Clinical Precision</p>
-            </div>
-            <div class="p-8 text-center">
-                <p class="text-3xl font-bold text-white mb-1">Active</p>
-                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Nationwide Support</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- About v2 -->
-    <section id="about" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <div class="grid grid-cols-12 grid-rows-12 gap-4 h-[500px]">
-                    <div class="col-span-8 row-span-12 rounded-3xl overflow-hidden border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-80" alt="Factory">
-                    </div>
-                    <div class="col-span-4 row-span-6 rounded-3xl overflow-hidden border border-white/10 bg-sky-500/10 flex flex-col justify-center items-center text-center p-4">
-                        <p class="text-3xl font-bold text-sky-400">CE</p>
-                        <p class="text-[10px] font-bold">CERTIFIED</p>
-                    </div>
-                    <div class="col-span-4 row-span-6 rounded-3xl overflow-hidden border border-white/10">
-                         <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-60" alt="Engineering">
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-sky-500 font-bold uppercase tracking-[0.3em] text-xs mb-6">Our Evolution</h3>
-                <h2 class="text-5xl font-bold mb-8 leading-tight">Engineering the Pulse of the Modern OT.</h2>
-                <p class="text-slate-400 text-lg leading-relaxed mb-10 font-light">
-                    Life Gas System (LGS) represents a paradigm shift in medical infrastructure. Based in Coimbatore, we specialize in high-integrity delivery systems that healthcare professionals rely on every second.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-start gap-5 p-6 glass-card rounded-2xl">
-                        <div class="w-12 h-12 bg-sky-500/10 rounded-xl flex items-center justify-center text-sky-400 border border-sky-500/20">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86 7.717l.542 1.355a2 2 0 002.051 1.25l2.787-.139a2 2 0 001.62-1.282l.267-.801a2 2 0 00-.547-1.022z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">GSTIN: 33DEBPK8521J1ZJ</h4>
-                            <p class="text-sm text-slate-500">Registered and fully compliant legal entity operating under Kishore Kumar .</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dynamic Product Architecture -->
-    <section id="products" class="py-32 px-6 bg-slate-950/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-                <div>
-                    <h3 class="text-sky-500 font-bold uppercase tracking-[0.3em] text-xs mb-4 text-center md:text-left">Product Ecosystem</h3>
-                    <h2 class="text-5xl font-bold text-center md:text-left">Advanced Infrastructure</h2>
-                </div>
-                <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-                    <span class="px-6 py-2 rounded-full glass-dark text-xs font-bold text-sky-400 border border-sky-400/30 whitespace-nowrap">All Units</span>
-                    <span class="px-6 py-2 rounded-full glass-dark text-xs font-bold text-slate-500 border border-white/5 whitespace-nowrap">ICU</span>
-                    <span class="px-6 py-2 rounded-full glass-dark text-xs font-bold text-slate-500 border border-white/5 whitespace-nowrap">OT</span>
-                    <span class="px-6 py-2 rounded-full glass-dark text-xs font-bold text-slate-500 border border-white/5 whitespace-nowrap">Wards</span>
-                </div>
-            </div>
-
-            <div class="product-grid">
-                <!-- Group 1: Pendants -->
-                <div class="glass-card p-4 rounded-[2.5rem] relative group overflow-hidden">
-                    <div class="absolute top-6 right-6 bg-sky-500 text-[10px] font-black px-3 py-1 rounded-full z-10">CORE</div>
-                    <img src=1768474090376.jpg class="rounded-[2rem] w-full aspect-square object-cover mb-8 group-hover:scale-110 transition duration-700" alt="Medical Pendent">
-                    <div class="px-4 pb-4">
-                        <h3 class="text-2xl font-bold mb-4">Medical Pendants</h3>
-                        <div class="space-y-2 mb-8">
-                            <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Single Arm Pendant
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Double Arm Pendant
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Rigid Pendant
-                            </div>
-                        </div>
-                        <button onclick="location.href='pendent.html'" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-sky-500 hover:text-white transition">Learn More</button>
-                    </div>
-                </div>
-
-                <!-- Group 2: Control Panels -->
-                <div class="glass-card p-4 rounded-[2.5rem] relative group overflow-hidden">
-                    <img src="1768473983915.jpg" class="rounded-[2rem] w-full aspect-square object-cover mb-8 group-hover:scale-110 transition duration-700" alt="Control Panels">
-                    <div class="px-4 pb-4">
-                        <h3 class="text-2xl font-bold mb-4">Semi-Auto Control</h3>
-                        <div class="space-y-2 mb-8">
-                            <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Oxygen Specialty
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Nitrous Specialty
-                            </div>
-                        </div>
-                        <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#control-gallery';" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-sky-500 hover:text-white transition">Learn More</button>
-                    </div>
-                </div>
-
-               <!-- Group 3: Vacuum & Ward -->
-                <div class="glass-card p-4 rounded-[2.5rem] relative group overflow-hidden">
-                    <img src="1768473969621.jpg" class="rounded-[2rem] w-full aspect-square object-cover mb-8 group-hover:scale-110 transition duration-700" alt="Ward Vacuum Jar Set">
-                    <div class="px-4 pb-4">
-                        <h3 class="text-2xl font-bold mb-4">Ward Vacuum Jar Set</h3>
-                                                    <div class="flex items-center gap-2 text-xs text-slate-400">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> OT Vacuum Trolley Set
-                            </div>
-                        </div>
-                    <div class="space-y-2 mb-8">
-                    </div>
-                        <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#vacuum-gallery';" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-sky-500 hover:text-white transition">Learn More</button>
-                    </div>
-                </div>
-            
-            <div class="glass-card p-4 rounded-[2.5rem] relative group overflow-hidden">
-                    <img src="1768473976715.jpg" class="rounded-[2rem] w-full aspect-square object-cover mb-8 group-hover:scale-110 transition duration-700" alt="Flow Meter">
-                    <div class="px-4 pb-4">
-                        <h3 class="text-2xl font-bold mb-4">Flow Meter</h3>
-                        </div>
-                    <div class="space-y-2 mb-8">
-                    </div>
-                        <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#flow-gallery';" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-sky-500 hover:text-white transition">Learn More</button>
-                    </div>
-                 </div>
-                
-
-                <!-- Others -->
-                <div class="glass-card p-4 rounded-[2.5rem] group">
-                    <div class="px-6 py-8">
-                        <h3 class="text-2xl font-bold mb-6">Patient Environment</h3>
-                        <div class="space-y-6">
-                            <div class="flex justify-between items-center group/item">
-                                <div>
-                                    <p class="font-bold">Bed Head Panels</p>
-                                    <p class="text-[10px] text-slate-500 uppercase">Integrated Patient Units</p>
-                                </div>
-                                <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#bhp-gallery';" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-sky-500 transition">-></button>
-                            </div>
-                            <div class="flex justify-between items-center group/item">
-                                <div>
-                                    <p class="font-bold">ICU Curtains & Tracks</p>
-                                    <p class="text-[10px] text-slate-500 uppercase">Anti-bacterial Privacy</p>
-                                </div>
-                                <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#curtain-gallery';" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-sky-500 transition">-></button>
-                            </div>
-                            <div class="flex justify-between items-center group/item">
-                                <div>
-                                    <p class="font-bold">MANIFOLD Systems</p>
-                                    <p class="text-[10px] text-slate-500 uppercase">High Capacity Gas Central</p>
-                                </div>
-                                <button onclick="location.href='https://manufacturing.lgs.co.in/gallerys.html#manifold-gallery';" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-sky-500 transition">-></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & 3D Elements -->
-    <section id="contact" class="py-32 px-6 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vh] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-start relative z-10">
-            <div>
-                <h2 class="text-6xl font-bold mb-12">Let's build <br><span class="text-sky-400">Smarter Clinical</span> Spaces.</h2>
-                <div class="space-y-10">
-                    <div class="flex gap-6 items-center">
-                        <div class="w-16 h-16 rounded-2xl glass-dark border border-white/10 flex items-center justify-center text-sky-400 shadow-xl">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Email</p>
-                            <p class="text-white text-lg font-light">lifegas1987@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6 items-center">
-                        <div class="w-16 h-16 rounded-2xl glass-dark border border-white/10 flex items-center justify-center text-sky-400 shadow-xl">
-                            <i class="fas fa-location-dot text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Manufacturing Unit</p>
-                            <p class="text-white text-lg font-light">Indira Nagar 2nd St, Ramanathapuram, Coimbatore - 641045</p>
-                        </div>
-                    </div> <div class="flex gap-6 items-center">
-                        <div class="w-16 h-16 rounded-2xl glass-dark border border-white/10 flex items-center justify-center text-sky-400 shadow-xl">
-                             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Direct Lines</p>
-                            <p class="text-white text-lg font-light">+91 96298 13483 / 96592 33313</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="glass-dark p-10 rounded-[3rem] border border-white/10 shadow-3xl">
-                <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-2xl font-bold">Project Inquiry</h3>
-                    <div class="flex gap-1">
-                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-                        <span class="w-2 h-2 rounded-full bg-sky-500/50"></span>
-                        <span class="w-2 h-2 rounded-full bg-sky-500/20"></span>
-                    </div>
-                </div>
-                <form onsubmit="handleInquiry(event)" class="space-y-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Hospital / Client Name</label>
-                        <input type="text" id="custName" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-sky-500 transition" placeholder="e.g. Apollo Hospitals" required>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Requirement Details</label>
-                        <textarea id="custMsg" rows="4" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-sky-500 transition resize-none" placeholder="Interested in OT Vacuum Sets and Pendants..." required></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-sky-500 py-5 rounded-2xl font-bold text-white shadow-2xl shadow-sky-500/20 hover:bg-sky-400 transition">Request Executive Quote</button>
-                    <p class="text-[10px] text-center text-slate-500 font-bold uppercase tracking-widest">Typical response time: &lt; 120 Minutes</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- High End Footer -->
-    <footer class="bg-black py-24 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-4 gap-16 mb-20">
-                <div class="lg:col-span-2">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-white-500 rounded-2xl flex items-center justify-center">
-                            <img src="logo-t.webp"/>
-                        </div>
-                        <h2 class="text-3xl font-bold tracking-tighter">LIFE GAS SYSTEM</h2>
-                    </div>
-                    <p class="text-slate-500 max-w-sm mb-8 font-light leading-relaxed">
-                        Industry-leading medical gas infrastructure systems since 2025. ISO 9001:2015 & CE Certified for global standards of patient safety.
+                    <h1 class="text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] mb-8">
+                        The Infrastructure <br><span class="text-yellow-500">of Life.</span>
+                    </h1>
+                    <p class="text-xl text-slate-500 font-light leading-relaxed mb-12 max-w-lg">
+                        We manufacture critical pipeline systems and ICU structures that power modern healthcare. <span class="font-bold text-slate-900 underline decoration-yellow-400">ISO 9001:2015 & CE Certified.</span>
                     </p>
-                    <div class="flex gap-4">
-                        <div class="px-4 py-2 rounded-lg border border-white/5 bg-white/5 text-[10px] font-bold">GST: 33BTKPP2289J1Z7</div>
-                        <div class="px-4 py-2 rounded-lg border border-white/5 bg-white/5 text-[10px] font-bold">HSN: 9018/9033</div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <a href="#solutions" class="btn-core w-full sm:w-auto">Exploration Catalog</a>
+                        <div class="flex -space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold">15y</div>
+                            <div class="w-12 h-12 rounded-full bg-yellow-400 border-2 border-white flex items-center justify-center text-[10px] font-bold">ISO</div>
+                            <div class="w-12 h-12 rounded-full bg-slate-900 border-2 border-white flex items-center justify-center text-[10px] font-bold text-white uppercase">CE</div>
+                            <div class="w-12 h-12 rounded-full bg-slate-50 border-2 border-white flex items-center justify-center text-xs font-bold text-slate-400"><i class="fas fa-plus"></i></div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="text-sky-500 font-bold text-xs uppercase tracking-widest mb-8">Quick Links</h4>
-                    <ul class="space-y-4 text-slate-400 font-medium">
-                        <li><a href="#about" class="hover:text-white transition">About Life Gas System</a></li>
-                        <li><a href="#products" class="hover:text-white transition">Product Catalogue</a></li>
-                        <li><a href="https://www.canva.com/design/DAG6wA1DBx8/j_4dXy-OamS2U-YZXSt-gw/edit" target="_blank" class="hover:text-white transition">View Catalog</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Emergency Line</a></li>
-                        <li><a href="gallerys.html" class="hover:text-white transition">Gallery</a></li>
 
+                <div class="relative" data-aos="fade-left">
+                    <div class="relative z-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80" alt="Hospital Infrastructure" class="rounded-2xl">
+                        <div class="absolute -bottom-10 -right-10 bg-slate-900 p-8 rounded-2xl text-white shadow-xl hidden md:block text-right">
+                            <span class="mono text-yellow-400 text-xs block mb-2">QUALITY_STANDARD</span>
+                            <span class="text-lg font-bold tracking-tight">ISO 9001:2015<br>& CE COMPLIANT</span>
+                        </div>
+                    </div>
+                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-yellow-100 rounded-full blur-[100px] opacity-60"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Spec Banner -->
+    <section id="about" class="py-24 bg-white border-y border-slate-100 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-2 space-y-6">
+                    <h3 class="text-4xl font-bold tracking-tight">Manufacturing Unit <br><span class="text-slate-400">Capabilities</span></h3>
+                    <p class="text-slate-500 max-w-md">Our Coimbatore facility specializes in precision machining and assembly of medical gas pipeline systems (MGPS) and ICU environment modulars under global quality standards.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                    <span class="spec-label mb-4 block">Primary Location</span>
+                    <address class="not-italic text-sm font-bold text-slate-700 leading-relaxed">
+                        Indira Nagar 2nd St,<br>
+                        Ramanathapuram, Coimbatore<br>
+                        Tamil Nadu - 641045
+                    </address>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-2xl text-white">
+                    <span class="spec-label mb-4 block text-slate-500">Contact Desk</span>
+                    <p class="text-xl font-black mb-2 tracking-tighter">+91 96298 13483</p>
+                    <p class="text-xl font-black tracking-tighter text-yellow-400">+91 96592 33313</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Product Grid -->
+    <section id="solutions" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div>
+                    <span class="spec-label text-yellow-600 mb-4 block">Product Ecosystem</span>
+                    <h2 class="text-5xl font-black text-slate-900">High-Spec Solutions</h2>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-400"><i class="fas fa-chevron-left"></i></div>
+                    <div class="w-12 h-12 rounded-full border border-slate-900 flex items-center justify-center text-slate-900"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Medical Pendants Series -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-anchor text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-PD-PRO</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">Medical Pendants Series</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Single arm • Double arm • Rigid pendants for ICU & OT with integrated gas and data supply.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>ICU & OT Optimized</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Manifold Systems -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-microchip text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-MS-900</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">Manifold Systems</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Automatic changeover • High-flow gas banks • Medical central supply systems for hospital-wide O2/N2O.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>Central Supply</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Bed Head Panels -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-columns text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-BH-400</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">Bed Head Panels</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Integrated gas outlets, nurse call, lighting & electrical sockets in modular aluminum housing.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>Integrated Modular</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Vacuum Systems -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-vial text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-VC-SET</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">Vacuum Solutions</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Ward Vacuum Jar and OT Vacuum Trolly Set for high-efficiency clinical suction needs.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>Clinical Suction</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <!-- ICU Curtains -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-border-none text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-CT-SERIES</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">ICU Curtain Tracks</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Antimicrobial curtains • Smooth glide • Modular ceiling tracks & cubical partition systems.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>Antimicrobial</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Precision Flow Meters -->
+                <div class="card-premium p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors duration-500">
+                            <i class="fas fa-tachometer-alt text-2xl"></i>
+                        </div>
+                        <span class="mono text-[10px] font-bold text-slate-300">#LGS-FM-PF</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 group-hover:text-yellow-600 transition-colors">Precision Flow Meters</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Accurate flow regulation for medical oxygen and air with high-durability polycarbonate tubes.</p>
+                    <hr class="border-slate-100 mb-6">
+                    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>Gas Regulation</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrial Inquiry Block -->
+    <section id="contact" class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] p-12 lg:p-24 text-white relative overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-24 relative z-10">
+                    <div>
+                        <h3 class="text-5xl font-black mb-8 leading-tight">Start Your <br><span class="text-yellow-400">Production Run.</span></h3>
+                        <p class="text-slate-400 text-lg font-light mb-12">Submit your facility layouts or item quantities. Our engineering team provides precise BOQ estimations within 24 hours.</p>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <span class="spec-label block text-slate-500">Unit Direct</span>
+                                    <span class="text-xl font-bold">+91 96592 33313</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="REPRESENTATIVE NAME" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl outline-none focus:border-yellow-400 transition-all text-sm uppercase font-bold tracking-widest">
+                            <input type="tel" placeholder="MOBILE NO" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl outline-none focus:border-yellow-400 transition-all text-sm uppercase font-bold tracking-widest">
+                        </div>
+                        <input type="email" placeholder="OFFICIAL EMAIL ID" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl outline-none focus:border-yellow-400 transition-all text-sm uppercase font-bold tracking-widest">
+                        <textarea rows="4" placeholder="DESCRIBE YOUR REQUIREMENT" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl outline-none focus:border-yellow-400 transition-all text-sm uppercase font-bold tracking-widest"></textarea>
+                        <button class="w-full bg-yellow-400 text-slate-900 py-6 rounded-xl font-black uppercase tracking-[0.2em] text-xs hover:bg-yellow-300 transition-all">Transmit Inquiry</button>
+                    </form>
+                </div>
+                <!-- Abstract Design Element -->
+                <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" viewBox="0 0 100 100">
+                        <circle cx="80" cy="20" r="40" stroke="white" stroke-width="0.5" fill="none" />
+                        <line x1="0" y1="0" x2="100" y2="100" stroke="white" stroke-width="0.2" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="bg-slate-900 text-white pt-24">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-20">
+                <!-- Brand Identity -->
+                <div class="space-y-6">
+                    <div class="flex items-center">
+                        <img src="logo-t.webp" alt="Logo" class="h-10 mr-4 brightness-0 invert">
+                        <span class="text-xl font-black tracking-tighter uppercase">Life Gas <span class="text-yellow-400">System</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        ISO 9001:2015 & CE Certified manufacturer of medical gas pipeline systems and critical ICU infrastructure. Engineered for reliability.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="https://www.instagram.com/life_gas_system/" target="_blank" class="social-btn"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="https://in.linkedin.com/company/life-gas-system-medical-gas-pipeline-system" target="_blank" class="social-btn"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="https://www.facebook.com/Lifegassystem/" target="_blank" class="social-btn"><i class="fab fa-facebook-f text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="spec-label text-slate-500 mb-8 block">Quick Index</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="footer-link text-xs font-bold uppercase tracking-widest">Index Home</a></li>
+                        <li><a href="#solutions" class="footer-link text-xs font-bold uppercase tracking-widest">Engineering Catalog</a></li>
+                        <li><a href="#about" class="footer-link text-xs font-bold uppercase tracking-widest">Manufacturing Unit</a></li>
+                        <li><a href="gallerys.html" class="footer-link text-xs font-bold uppercase tracking-widest">Visual Gallery</a></li>
+                        <li><a href="#contact" class="footer-link text-xs font-bold uppercase tracking-widest">Request BOQ</a></li>
                     </ul>
                 </div>
+
+                <!-- Manufacturing Details -->
                 <div>
-                    <h4 class="text-sky-500 font-bold text-xs uppercase tracking-widest mb-8">Support</h4>
-                    <p class="text-slate-500 text-sm mb-4">Mon - Sun: 09:00 - 17:00</p>
-                    <div class="p-4 rounded-2xl border border-sky-500/20 bg-sky-500/5 text-sky-400 font-bold text-xs">
-                        24/7 CRITICAL HOTLINE ACTIVE
+                    <h4 class="spec-label text-slate-500 mb-8 block">Production HQ</h4>
+                    <div class="space-y-4 text-slate-400">
+                        <p class="text-sm font-medium">
+                            Indira Nagar 2nd St, <br>
+                            Ramanathapuram, <br>
+                            Coimbatore - 641045
+                        </p>
+                        <div class="pt-2">
+                            <span class="spec-label text-[9px] text-slate-600 block mb-1">Compliance Status</span>
+                            <p class="text-xs font-bold text-white tracking-widest">ISO 9001:2015 + CE</p>
+                            <p class="text-xs font-bold text-white tracking-widest mt-1">GST: 33BTKPP2289J1Z7</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Newsletter / Lead Gen -->
+                <div class="bg-white/5 p-8 rounded-3xl border border-white/5">
+                    <h4 class="text-xs font-black uppercase tracking-widest mb-4">Newsletter Subscription</h4>
+                    <p class="text-[10px] text-slate-500 mb-6 leading-relaxed">Receive technical dossiers and manufacturing updates.</p>
+                    <form id="footerNewsletter" class="space-y-3">
+                        <input type="email" id="footerEmail" placeholder="ENTER EMAIL" required class="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl outline-none text-[10px] font-bold uppercase tracking-widest focus:border-yellow-400 transition-all">
+                        <button class="w-full bg-yellow-400 text-slate-900 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-300 transition-all">Subscribe</button>
+                    </form>
+                </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
-                <p class="text-slate-600 text-[10px] font-bold uppercase tracking-widest"><script>document.write(new Date().getFullYear())</script> LIFE GAS SYSTEM</p>
-                <div class="text-slate-400 font-bold text-xs tracking-widest flex items-center gap-4">
-                    <span class="w-12 h-[1px] bg-slate-800"></span>
-                    DESIGN BY MOURISH DEVELOPERS
+
+            <!-- Bottom Legal Bar -->
+            <div class="border-t border-white/5 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-6">
+                    <p class="text-[9px] font-bold text-slate-600 uppercase tracking-[0.2em]">&copy; 2024 LIFE GAS SYSTEM. MANUFACTURED IN INDIA.</p>
+                </div>
+                <div class="flex gap-8">
+                    <a href="https://torismanagement.com/clients.php" target="_blank" class="text-[9px] font-bold text-emerald-500 hover:text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> ISO 9001:2015 & CE CERTIFIED
+                    </a>
+                    <span class="text-[9px] font-bold text-slate-700 uppercase tracking-widest mono">Ver 4.2_LGS</span>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // High-Performance Smoke & Particle System
-        const canvas = document.getElementById('smoke-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let molecules = [];
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        class SmokeParticle {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 100;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = -Math.random() * 1.5 - 0.5;
-                this.size = Math.random() * 200 + 100;
-                this.alpha = Math.random() * 0.2;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.alpha -= 0.0005;
-                if (this.alpha <= 0 || this.y < -this.size) this.reset();
-            }
-            draw() {
-                ctx.beginPath();
-                const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                g.addColorStop(0, `rgba(14, 165, 233, ${this.alpha})`);
-                g.addColorStop(1, 'rgba(14, 165, 233, 0)');
-                ctx.fillStyle = g;
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        class Molecule {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.s = Math.random() * 2 + 1;
-                this.v = Math.random() * 0.5 + 0.1;
-                this.a = Math.random() * Math.PI * 2;
-            }
-            update() {
-                this.x += Math.cos(this.a) * this.v;
-                this.y += Math.sin(this.a) * this.v;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
-                ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            for (let i = 0; i < 30; i++) particles.push(new SmokeParticle());
-            for (let i = 0; i < 50; i++) molecules.push(new Molecule());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            molecules.forEach(m => { m.update(); m.draw(); });
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-
-        function scrollToId(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function inquiry(prod) {
-            const msg = `LGS Executive Inquiry: I am interested in ${prod}. Please provide technical catalogue and corporate pricing.`;
-            window.open(`https://wa.me/919629813483?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function handleInquiry(e) {
+        // Newsletter Logic
+        const handleNews = (e) => {
             e.preventDefault();
-            const n = document.getElementById('custName').value;
-            const m = document.getElementById('custMsg').value;
-            const full = `Life Gas System Inquiry\nClient: ${n}\nRequest: ${m}`;
-            window.open(`https://wa.me/919629813483?text=${encodeURIComponent(full)}`, '_blank');
-        }
+            const emailInput = e.target.querySelector('input');
+            const subject = encodeURIComponent("Technical Dossier Subscription");
+            const body = encodeURIComponent(`Newsletter request from: ${emailInput.value}`);
+            window.location.href = `mailto:lifegas1987@gmail.com?subject=${subject}&body=${body}`;
+            
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = 'SUCCESS';
+            btn.style.background = "#10b981";
+            e.target.reset();
+        };
+
+        document.getElementById('footerNewsletter').addEventListener('submit', handleNews);
     </script>
 </body>
 </html>
