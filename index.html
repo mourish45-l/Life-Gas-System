@@ -246,7 +246,6 @@
                 </div>
                 <div class="bg-slate-900 p-8 rounded-2xl text-white">
                     <span class="spec-label mb-4 block text-slate-500">Contact Desk</span>
-                    <p class="text-xl font-black mb-2 tracking-tighter">+91 96298 13483</p>
                     <p class="text-xl font-black tracking-tighter text-yellow-400">+91 96592 33313</p>
                 </div>
             </div>
@@ -459,12 +458,14 @@
                 </div>
 
                 <div class="bg-white/5 p-8 rounded-3xl border border-white/5">
-                    <h4 class="text-xs font-black uppercase tracking-widest mb-4">Newsletter</h4>
-                    <p class="text-[10px] text-slate-500 mb-6 leading-relaxed">Receive technical dossiers and manufacturing updates.</p>
-                    <form id="footerNewsletter" class="space-y-3">
-                        <input type="email" placeholder="ENTER EMAIL" required class="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl outline-none text-[10px] font-bold uppercase tracking-widest focus:border-yellow-400 transition-all text-white">
-                        <button type="submit" class="w-full bg-yellow-400 text-slate-900 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-300 transition-all">Subscribe</button>
-                    </form>
+    <h4 class="text-xs font-black uppercase tracking-widest mb-4">Newsletter</h4>
+    <p class="text-[10px] text-slate-500 mb-6 leading-relaxed">Receive technical dossiers and manufacturing updates.</p>
+    
+    <form id="footerNewsletter" class="space-y-3" onsubmit="sendWhatsApp(event)">
+        <input id="newsletterEmail" type="email" placeholder="ENTER EMAIL" required class="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl outline-none text-[10px] font-bold uppercase tracking-widest focus:border-yellow-400 transition-all text-white">
+        
+        <button type="submit" class="w-full bg-yellow-400 text-slate-900 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-300 transition-all">Subscribe</button>
+    </form>
                 </div>
             </div>
 
@@ -500,6 +501,22 @@
                 inquiryForm.reset();
             });
         }
+
+
+function sendWhatsApp(event) {
+    event.preventDefault(); 
+    
+    const emailInput = document.getElementById('newsletterEmail').value;
+    const messageText = `This email ${emailInput} has subscribed to the newsletter.`;
+    const encodedMessage = encodeURIComponent(messageText);
+    
+    // IMPORTANT: Replace YOUR_COUNTRY_CODE_HERE with the real prefix (e.g., 965, 1, 91, etc.)
+    const countryCode = "91"; 
+    const phoneNumber = countryCode + "9659233313";
+    
+    window.open(`https://wa.me{phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
 
         // Handle footer newsletter form submission
         const footerForm = document.getElementById('footerNewsletter');
