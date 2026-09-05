@@ -425,7 +425,7 @@
                     </p>
                     <div class="flex gap-4">
                         <a href="https://share.google/4lbfA2tCnZMYnadGc" target="_blank" class="social-btn"><i class="fab fa-google text-sm"></i></a>
-                        <a href="https://wa.me/919629813483" target="_blank" class="social-btn"><i class="fab fa-whatsapp text-sm"></i></a>
+                        <a href="https://wa.me/919659233313" target="_blank" class="social-btn"><i class="fab fa-whatsapp text-sm"></i></a>
                         <a href="https://www.facebook.com/people/Life-Gas-System/100086734232890/" target="_blank" class="social-btn"><i class="fab fa-facebook-f text-sm"></i></a>
                     </div>
                 </div>
@@ -458,14 +458,14 @@
                 </div>
 
                 <div class="bg-white/5 p-8 rounded-3xl border border-white/5">
-    <h4 class="text-xs font-black uppercase tracking-widest mb-4">Newsletter</h4>
-    <p class="text-[10px] text-slate-500 mb-6 leading-relaxed">Receive technical dossiers and manufacturing updates.</p>
-    
-    <form id="footerNewsletter" class="space-y-3" onsubmit="sendWhatsApp(event)">
-        <input id="newsletterEmail" type="email" placeholder="ENTER EMAIL" required class="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl outline-none text-[10px] font-bold uppercase tracking-widest focus:border-yellow-400 transition-all text-white">
-        
-        <button type="submit" class="w-full bg-yellow-400 text-slate-900 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-300 transition-all">Subscribe</button>
-    </form>
+                    <h4 class="text-xs font-black uppercase tracking-widest mb-4">Newsletter</h4>
+                    <p class="text-[10px] text-slate-500 mb-6 leading-relaxed">Receive technical dossiers and manufacturing updates.</p>
+                    
+                    <form id="footerNewsletter" class="space-y-3">
+                        <input id="newsletterEmail" type="email" placeholder="ENTER EMAIL" required class="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl outline-none text-[10px] font-bold uppercase tracking-widest focus:border-yellow-400 transition-all text-white">
+                        
+                        <button type="submit" class="w-full bg-yellow-400 text-slate-900 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-300 transition-all">Subscribe</button>
+                    </form>
                 </div>
             </div>
 
@@ -485,11 +485,31 @@
     <script>
         AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
 
-        // Handle main inquiry form submission
+        // Helper function to send a message via WhatsApp to +91 96592 33313
+        function sendWhatsAppMessage(message) {
+            const phone = '919659233313'; // +91 96592 33313 without +
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Main inquiry form
         const inquiryForm = document.querySelector('#contact form');
         if (inquiryForm) {
             inquiryForm.addEventListener('submit', (e) => {
                 e.preventDefault();
+                // Gather all input values with their placeholders as labels
+                const inputs = inquiryForm.querySelectorAll('input, textarea');
+                let message = 'New Inquiry from Life Gas System website:\n';
+                inputs.forEach(input => {
+                    const label = input.placeholder || input.name || 'Field';
+                    const value = input.value.trim();
+                    if (value) {
+                        message += `${label}: ${value}\n`;
+                    }
+                });
+                // Send via WhatsApp
+                sendWhatsAppMessage(message);
+                // Show success feedback
                 const submitBtn = inquiryForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '✓ SENT';
@@ -502,36 +522,27 @@
             });
         }
 
-
-function sendWhatsApp(event) {
-    event.preventDefault(); 
-    
-    const emailInput = document.getElementById('newsletterEmail').value;
-    const messageText = `This email ${emailInput} has subscribed to the newsletter.`;
-    const encodedMessage = encodeURIComponent(messageText);
-    
-    // IMPORTANT: Replace YOUR_COUNTRY_CODE_HERE with the real prefix (e.g., 965, 1, 91, etc.)
-    const countryCode = "91"; 
-    const phoneNumber = countryCode + "9659233313";
-    
-    window.open(`https://wa.me/{phoneNumber}?text=${encodedMessage}`, '_blank');
-}
-
-
-        // Handle footer newsletter form submission
+        // Footer newsletter form
         const footerForm = document.getElementById('footerNewsletter');
         if (footerForm) {
             footerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const btn = footerForm.querySelector('button');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✓ SUCCESS';
-                btn.style.background = "#10b981";
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = "#eab308";
-                }, 3000);
-                footerForm.reset();
+                const emailInput = document.getElementById('newsletterEmail');
+                const email = emailInput.value.trim();
+                if (email) {
+                    const message = `Newsletter subscription from ${email}`;
+                    sendWhatsAppMessage(message);
+                    // Show success feedback
+                    const btn = footerForm.querySelector('button');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '✓ SUCCESS';
+                    btn.style.background = "#10b981";
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.background = "#eab308";
+                    }, 3000);
+                    footerForm.reset();
+                }
             });
         }
     </script>
